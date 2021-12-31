@@ -91,6 +91,7 @@ void Player::Move(Grid* pGrid, int diceNumber)
 	if (this->turnCount == 3) {
 		wallet += 10 * diceNumber;
 		this->turnCount = 0;
+		return;
 	}
 
 
@@ -126,6 +127,7 @@ void Player::Move(Grid* pGrid, int diceNumber)
 	else {
 		pOut->PrintMessage("Dice roll prevented ! Wait for the next turn..");
 		SetTurnsDisabled(TurnsDisabled - 1);
+
 	}
 
 }
