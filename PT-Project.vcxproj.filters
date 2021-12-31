@@ -190,9 +190,6 @@
     <ClCompile Include="CardFour.cpp">
       <Filter>GameObjects\Cards</Filter>
     </ClCompile>
-    <ClCompile Include="InputDiceValueAction.cpp">
-      <Filter>GameObjects\Cards</Filter>
-    </ClCompile>
     <ClCompile Include="CardSeven.cpp">
       <Filter>GameObjects\Cards</Filter>
     </ClCompile>
@@ -207,6 +204,12 @@
     </ClCompile>
     <ClCompile Include="Snake.cpp">
       <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="CardFive.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="InputDiceValueAction.cpp">
+      <Filter>Actions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -342,6 +345,9 @@
     </ClInclude>
     <ClInclude Include="Snake.h">
       <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CardFive.h">
+      <Filter>GameObjects\Cards</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

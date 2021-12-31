@@ -134,6 +134,7 @@
     <ClCompile Include="AddSnakeAction.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="Card.cpp" />
+    <ClCompile Include="CardFive.cpp" />
     <ClCompile Include="CardFour.cpp" />
     <ClCompile Include="CardOne.cpp" />
     <ClCompile Include="CardSeven.cpp" />
@@ -196,6 +197,7 @@
     <ClInclude Include="AddSnakeAction.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="Card.h" />
+    <ClInclude Include="CardFive.h" />
     <ClInclude Include="CardFour.h" />
     <ClInclude Include="CardOne.h" />
     <ClInclude Include="CardSeven.h" />
