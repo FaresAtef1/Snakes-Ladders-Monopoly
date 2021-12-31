@@ -47,7 +47,7 @@ int Player::GetTurnCount() const
 void Player::SetTurnsDisabled(int t) {
 	TurnsDisabled = (t >= 0) ? t : 0;
 }
-int Player::getTurnsDisabled() {
+int Player::getTurnsDisabled() const {
 	return TurnsDisabled;
 }
 

@@ -32,7 +32,7 @@ public:
 	int GetTurnCount() const;		// A getter for the turnCount
 
 	void SetTurnsDisabled(int t);
-	int getTurnsDisabled();
+	int getTurnsDisabled() const;
 	///TODO: You can add setters and getters for data members here (if needed)
 
 	// ====== Drawing Functions ======
