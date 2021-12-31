@@ -1,4 +1,5 @@
 #include "CardFour.h"
+
 CardFour::CardFour(const CellPosition& cellposition) : Card(cellposition){
 	cardNumber = 4;
 }
