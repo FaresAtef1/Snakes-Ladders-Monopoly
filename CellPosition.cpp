@@ -82,7 +82,7 @@ int CellPosition::GetCellNumFromPosition(const CellPosition & cellPosition)
 	// just define an integer that represents cell number and calculate it using the passed cellPosition then return it
 	///TODO: Implement this function as described in the .h file	
     // this line should be changed with your implementation
-}
+} 
 
 CellPosition CellPosition::GetCellPositionFromNum(int cellNum)
 {
@@ -109,8 +109,8 @@ CellPosition CellPosition::GetCellPositionFromNum(int cellNum)
 void CellPosition::AddCellNum (int addedNum)
 {   
 	/// TODO: Implement this function as described in the .h fileint num = (hCell + 1) + (8 - vCell) * 11;
-	int num = (hCell + 1) + (8 - vCell) * 11;
-	num += addedNum;
+	int num = (hCell + 1) + (NumVerticalCells - vCell-1) * NumHorizontalCells;
+	num = ((num + addedNum) > 0) ? (num + addedNum) : 1;
 	*this = GetCellPositionFromNum(num);
 	// Note: this function updates the data members (vCell and hCell) of the calling object
 

@@ -75,7 +75,7 @@ void Player::ClearDrawing(Output* pOut) const
 
 void Player::Move(Grid* pGrid, int diceNumber)
 {
-
+	
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 
 	Output* pOut = pGrid->GetOutput();
@@ -88,7 +88,8 @@ void Player::Move(Grid* pGrid, int diceNumber)
 
 	// 2- Check the turnCount to know if the wallet recharge turn comes (recharge wallet instead of move)
 	//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
-	if (this->turnCount == 3) {
+	if (this->turnCount == 3)
+	{
 		wallet += 10 * diceNumber;
 		this->turnCount = 0;
 		return;
@@ -96,7 +97,8 @@ void Player::Move(Grid* pGrid, int diceNumber)
 
 
 	// 3- Set the justRolledDiceNum with the passed diceNumber
-	if (getTurnsDisabled() == 0) {
+	if (getTurnsDisabled() == 0)
+	{
 		justRolledDiceNum = diceNumber;
 
 		// 4- Get the player current cell position, say "pos", and add to it the diceNumber (update the position)
@@ -114,17 +116,27 @@ void Player::Move(Grid* pGrid, int diceNumber)
 
 		// 6- Apply() the game object of the reached cell (if any)
 
-		if (GameObject* pObj = this->pCell->GetGameObject()) {
+		CellPosition BeforeObj = pCell->GetCellPosition();
+		GameObject* pObj = this->pCell->GetGameObject();
+		if (pObj)
+		{
 			pObj->Apply(pGrid, this);
+			while (BeforeObj.GetCellNum() != pCell->GetCellPosition().GetCellNum() && this->pCell->GetGameObject() != NULL) {
+				pObj = this->pCell->GetGameObject();
+				BeforeObj = pCell->GetCellPosition();
+				pObj->Apply(pGrid, this);
+			}
 		}
 
 		// 7- Check if the player reached the end cell of the whole game, and if yes, Set end game with true: pGrid->SetEndGame(true)
 
-		if (pCell->GetCellPosition().GetCellNum() >= 100) {
+		if (pCell->GetCellPosition().GetCellNum() >= 100)
+		{
 			pGrid->SetEndGame(true);
 		}
 	}
-	else {
+	else
+	{
 		pOut->PrintMessage("Dice roll prevented ! Wait for the next turn..");
 		SetTurnsDisabled(TurnsDisabled - 1);
 

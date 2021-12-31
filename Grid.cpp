@@ -96,7 +96,7 @@ void Grid::DecrementCurrPlayer() { //Decrementing the Current player's count by 
 // ========= Setters and Getters Functions =========
 GameObject* Grid::GetGameObjectOfCell(CellPosition pos) {
 	return CellList[pos.VCell()][pos.HCell()]->GetGameObject();
-}
+}		
 
 Input* Grid::GetInput() const
 {
@@ -133,6 +133,10 @@ void Grid::AdvanceCurrentPlayer()
 {
 	currPlayerNumber = (currPlayerNumber + 1) % MaxPlayerCount; // this generates value from 0 to MaxPlayerCount - 1
 }
+void Grid::RestartPlayerWithNum(int numofplayer) {
+	UpdatePlayerCell(PlayerList[numofplayer], CellPosition::GetCellPositionFromNum(1));
+}
+
 
 // ========= Other Getters =========
 
@@ -161,6 +165,9 @@ Ladder* Grid::GetNextLadder(const CellPosition& position)
 		startH = 0; // because in the next above rows, we will search from the first left cell (hCell = 0) to the right
 	}
 	return NULL; // not found
+}
+int Grid::GetCellNumOfPlayer(int numofplayer) {
+	return PlayerList[numofplayer]->GetCell()->GetCellPosition().GetCellNum();
 }
 
 

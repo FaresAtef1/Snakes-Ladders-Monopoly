@@ -6,7 +6,7 @@
 class Player
 {
 	Cell * pCell;		   // pointer to the current Cell of the player
-
+	
 	const int playerNum;   // the player number (from 0 to MaxPlayerCount-1)
 	                       // player number does NOT change after construction (const.)
 	int TurnsDisabled;

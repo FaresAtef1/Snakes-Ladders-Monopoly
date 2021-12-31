@@ -5,8 +5,12 @@ CardTwo::CardTwo(const CellPosition& cellposition) : Card(cellposition) {
 }
 
 void CardTwo::Apply(Grid* pGrid,Player* pPlayer) {
+	Output* pOut = pGrid->GetOutput();
 	Ladder* P = pGrid->GetNextLadder(pPlayer->GetCell()->GetCellPosition());
-	pGrid->UpdatePlayerCell(pPlayer, P->GetPosition());
-	pGrid->PrintErrorMessage("You've reached card 2 !  moving to the next ladder, click anywhere to continue...");
-	P->Apply(pGrid,pPlayer);
+		pGrid->PrintErrorMessage("You've reached card 2 !  moving to the next ladder, click anywhere to continue...");
+	if (P)
+	{
+		pGrid->UpdatePlayerCell(pPlayer, P->GetPosition());
+	}
+	else pOut->PrintMessage("No ladders ahead....");
  }
