@@ -84,7 +84,5 @@ void CardNine::Apply(Grid* pGrid, Player* pPlayer)
 			Owner->SetWallet(Owner->GetWallet() + Fees);
 		}
 	}
-	
-
 }
 
