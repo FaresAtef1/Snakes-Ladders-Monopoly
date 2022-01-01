@@ -33,6 +33,8 @@ public:
 
 	void SetTurnsDisabled(int t);
 	int getTurnsDisabled() const;
+
+	int getPlayerNum() const;
 	///TODO: You can add setters and getters for data members here (if needed)
 
 	// ====== Drawing Functions ======

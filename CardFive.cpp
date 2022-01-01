@@ -18,7 +18,7 @@ void CardFive::Apply(Grid* pGrid, Player* pPlayer)
 	Card::Apply(pGrid, pPlayer);
 	pOut->PrintMessage("Move backward with the rolled dice number...");
 
-	pPlayer->Move(pGrid, (-2 * pPlayer->GetjustRolledDiceNum()));
+	/*pPlayer->Move(pGrid, (-2 * pPlayer->GetjustRolledDiceNum()));*/
 
 }
 
