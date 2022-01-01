@@ -50,6 +50,9 @@ void Player::SetTurnsDisabled(int t) {
 int Player::getTurnsDisabled() const {
 	return TurnsDisabled;
 }
+int Player::getPlayerNum() const {
+	return playerNum;
+}
 
 // ====== Drawing Functions ======
 
@@ -88,16 +91,17 @@ void Player::Move(Grid* pGrid, int diceNumber)
 
 	// 2- Check the turnCount to know if the wallet recharge turn comes (recharge wallet instead of move)
 	//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
-	if (this->turnCount == 3)
+	if (this->turnCount == 4)
 	{
 		wallet += 10 * diceNumber;
 		this->turnCount = 0;
+		pOut->PrintMessage("Fourth time to roll ! Wallet increased by  " + to_string(10 * diceNumber));
 		return;
 	}
 
 
 	// 3- Set the justRolledDiceNum with the passed diceNumber
-	if (getTurnsDisabled() == 0)
+	if (getTurnsDisabled() == 0)			
 	{
 		justRolledDiceNum = diceNumber;
 
@@ -121,7 +125,8 @@ void Player::Move(Grid* pGrid, int diceNumber)
 		if (pObj)
 		{
 			pObj->Apply(pGrid, this);
-			while (BeforeObj.GetCellNum() != pCell->GetCellPosition().GetCellNum() && this->pCell->GetGameObject() != NULL) {
+			while (BeforeObj.GetCellNum() != pCell->GetCellPosition().GetCellNum() && this->pCell->GetGameObject() != NULL)
+			{
 				pObj = this->pCell->GetGameObject();
 				BeforeObj = pCell->GetCellPosition();
 				pObj->Apply(pGrid, this);
