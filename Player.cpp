@@ -50,6 +50,10 @@ void Player::SetTurnsDisabled(int t) {
 int Player::getTurnsDisabled() const {
 	return TurnsDisabled;
 }
+int Player::GetjustRolledDiceNum() const
+{
+	return justRolledDiceNum;
+}
 int Player::getPlayerNum() const {
 	return playerNum;
 }
