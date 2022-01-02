@@ -11,7 +11,6 @@ CardFive::~CardFive()
 {
 }
 
-
 void CardFive::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Output* pOut = pGrid->GetOutput();

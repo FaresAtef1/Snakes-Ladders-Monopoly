@@ -61,6 +61,7 @@ void CardNine::Apply(Grid* pGrid, Player* pPlayer)
 					pPlayer->SetWallet(pPlayer->GetWallet() - CardPrice);
 					Owner = pPlayer;
 					pOut->PrintMessage("Purchase complete .");
+					Owned = true;
 				}
 				else
 				{
@@ -72,7 +73,7 @@ void CardNine::Apply(Grid* pGrid, Player* pPlayer)
 			}
 
 		} while (t!="y" && t!="n");
-		Owned = true;
+		
 	} 
 	else 
 	{
@@ -83,7 +84,5 @@ void CardNine::Apply(Grid* pGrid, Player* pPlayer)
 			Owner->SetWallet(Owner->GetWallet() + Fees);
 		}
 	}
-	
-
 }
 

@@ -220,12 +220,7 @@
     <ClCompile Include="CardEleven.cpp">
       <Filter>GameObjects\Cards</Filter>
     </ClCompile>
-    <ClCompile Include="CardEight.cpp">
-      <Filter>GameObjects\Cards</Filter>
-    </ClCompile>
-    <ClCompile Include="CardTwelve.cpp">
-      <Filter>GameObjects\Cards</Filter>
-    </ClCompile>
+    <ClCompile Include="CopyCardAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -373,11 +368,6 @@
     <ClInclude Include="CardEleven.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
-    <ClInclude Include="CardEight.h">
-      <Filter>GameObjects\Cards</Filter>
-    </ClInclude>
-    <ClInclude Include="CardTwelve.h">
-      <Filter>GameObjects\Cards</Filter>
-    </ClInclude>
+    <ClInclude Include="CopyCardAction.h" />
   </ItemGroup>
 </Project>
