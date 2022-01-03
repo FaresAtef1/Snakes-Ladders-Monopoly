@@ -16,8 +16,11 @@ void CardFive::Apply(Grid* pGrid, Player* pPlayer)
 	Output* pOut = pGrid->GetOutput();
 	Card::Apply(pGrid, pPlayer);
 	pOut->PrintMessage("Move backward with the rolled dice number...");
+	CellPosition NewPosition = pPlayer->GetCell()->GetCellPosition();
+	NewPosition.AddCellNum(-2 * pPlayer->GetjustRolledDiceNum());
+	
+	pGrid->UpdatePlayerCell(pPlayer, NewPosition);
 
-	/*pPlayer->Move(pGrid, (-2 * pPlayer->GetjustRolledDiceNum()));*/
 
 }
 

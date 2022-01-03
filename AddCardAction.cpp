@@ -53,9 +53,6 @@ void AddCardAction::Execute()
 	case 1:
 		pCard = new CardOne(cardPosition);
 		break;
-
-		// A- Add the remaining cases
-	
 	case 2:
 		pCard = new CardTwo(cardPosition);
 		break;
@@ -65,18 +62,18 @@ void AddCardAction::Execute()
 	case 4:
 		pCard = new CardFour(cardPosition);
 	break;
-	/*case 5:
-		pCard = new Cardfive(cardPosition);
-		break;*/
+	case 5:
+		pCard = new CardFive(cardPosition);
+		break;
 	case 6:
 		pCard = new CardSix(cardPosition);
 		break;
 	case 7:
 		pCard = new CardSeven(cardPosition);
 		break;
-	/*case 8:
-		pCard = new Cardeigth(cardPosition);
-		break;*/
+	case 8:
+		pCard = new CardEight(cardPosition);
+		break;
 	case 9:
 		pCard = new CardNine(cardPosition);
 		break;
