@@ -60,3 +60,12 @@ void CardSix::Apply(Grid* pGrid, Player* pPlayer)
 	}
 
 }
+
+
+void  CardSix::Save(ofstream& OutFile, int Type) 
+{
+	if (Type == 2) {
+		Card::Save(OutFile, Type);
+		OutFile << this->CellToMoveTo.GetCellNum() << endl;
+	}
+}

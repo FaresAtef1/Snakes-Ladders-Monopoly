@@ -7,3 +7,10 @@ void CardThree::Apply(Grid* pGrid, Player* pPlayer)
 	pGrid->DecrementCurrPlayer();
 	pGrid->PrintErrorMessage("You've reached card 3 ! You get another turn, click anywhere to continue...");
  }
+void CardThree::Save(ofstream& OutFile, int Type)
+{
+	if (Type == 2) {
+		Card::Save(OutFile, Type);
+		OutFile << endl;
+	}
+}

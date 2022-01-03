@@ -12,6 +12,8 @@ protected:
 	int cardNumber; // an integer representing the card number
 
 public:
+	static int CardCount;
+
 	Card(const CellPosition& pos); // A Constructor for card that takes the cell position of it
 
 	void SetCardNumber(int cnum);   // The setter of card number
@@ -26,7 +28,8 @@ public:
 	virtual void Apply(Grid* pGrid, Player* pPlayer);  // It applies the effect of the Card Type on the passed player
 													   // It is a virtual function (implementation depends on Card Type)
 
-     
+	virtual void Save(ofstream& OutFile, int Type);
+
 
 	virtual ~Card(); // A Virtual Destructor
 };

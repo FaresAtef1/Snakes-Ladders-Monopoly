@@ -7,11 +7,14 @@
 #include"CardTwo.h"
 #include"CardThree.h"
 #include"CardFour.h"
+#include "CardFive.h"
 #include"CardSix.h"	
 #include"CardSeven.h"
+#include "CardEight.h"
 #include"CardNine.h"
 #include"CardTen.h"
 #include"CardEleven.h"
+
 
 class AddCardAction : public Action
 {

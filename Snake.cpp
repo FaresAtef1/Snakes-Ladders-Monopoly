@@ -1,9 +1,11 @@
 #include "Snake.h"
 
+int Snake::SnakeCount = 0;
+
 Snake::Snake(const CellPosition& startCellPos, const CellPosition& endCellPos) : GameObject(startCellPos)
 {
 	this->endCellPos = endCellPos;
-
+	SnakeCount++;
 	///TODO: Do the needed validation
 
 }
@@ -55,11 +57,24 @@ bool Snake::IsOverlapping(GameObject* newObj) const {
 }
 
 
+
 CellPosition Snake::GetEndPosition() const
 {
 	return endCellPos;
 }
 
+
+void Snake::Save(ofstream& OutFile, int Type)
+{
+
+	if (Type == 1) {
+		GameObject::Save(OutFile, Type);
+		//OutFile << this->GetPosition().GetCellNum() << " " << this->GetEndPosition().GetCellNum()<<endl;
+		OutFile << this->GetEndPosition().GetCellNum() << endl;
+	}
+}
+
 Snake::~Snake()
 {
+	SnakeCount--;
 }

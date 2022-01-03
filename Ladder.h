@@ -10,6 +10,8 @@ class Ladder : public GameObject // inherited from GameObject
 
 public:
 
+	static int LadderCount;
+
 	Ladder(const CellPosition& startCellPos, const CellPosition& endCellPos); // A constructor for initialization
 
 	virtual void Draw(Output* pOut) const; // Draws a ladder from its start cell to its end cell
@@ -19,6 +21,8 @@ public:
 	CellPosition GetEndPosition() const; // A getter for the endCellPos data member
 
 	virtual bool IsOverlapping(GameObject* newObj) const;
+
+	virtual void Save(ofstream& OutFile, int Type);
 
 
 	virtual ~Ladder(); // Virtual destructor

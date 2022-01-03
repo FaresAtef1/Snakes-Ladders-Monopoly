@@ -168,9 +168,37 @@ Ladder* Grid::GetNextLadder(const CellPosition& position)
 	}
 	return NULL; // not found
 }
-int Grid::GetCellNumOfPlayer(int numofplayer) {
+int Grid::GetCellNumOfPlayer(int numofplayer)
+{
 	return PlayerList[numofplayer]->GetCell()->GetCellPosition().GetCellNum();
 }
+
+int Grid::GetLadderCount()
+{
+	return Ladder::LadderCount;
+}
+
+int Grid::GetSnakeCount()
+{
+	return Snake::SnakeCount;
+}
+
+int Grid::GetCardCount() {
+	return Card::CardCount;
+}
+
+//========= Saving function =========
+void Grid::SaveAll(ofstream& OutFile, int Type)
+{
+	for (int i = NumVerticalCells-1; i >= 0; i--) {
+		for (int j = 0; j < NumHorizontalCells; j++) {
+			if (CellList[i][j]->GetGameObject()) {
+				CellList[i][j]->GetGameObject()->Save(OutFile, Type);
+			}
+		}
+	}
+}
+
 
 
 // ========= User Interface Functions =========

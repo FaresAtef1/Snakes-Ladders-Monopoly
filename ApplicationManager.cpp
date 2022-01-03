@@ -11,6 +11,8 @@
 #include"CopyCardAction.h"
 #include"PasteCardAction.h"
 #include"CutCardAction.h"
+#include "SaveGridAction.h"
+#include "DeleteGameObject.h"
 
 ///TODO: Add #include for all action types
 
@@ -102,10 +104,16 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new PasteCardAction(this);
 		break;
 	case CUT_CARD:
-		pAct = new CutCardAction(this);
-		///TODO: Add a case for EACH Action type in the Design mode or Play mode
+		pAct = new CutCardAction(this);	
 		break;
 
+	case SAVE_GRID:
+		pAct = new SaveGridAction(this);
+		break;
+
+	case DELETE_GAME_OBJECT:
+		pAct = new DeleteGameObject(this);
+		break;
 
 	case STATUS:	// a click on the status bar ==> no action
 		return;

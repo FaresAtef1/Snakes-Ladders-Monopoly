@@ -26,7 +26,7 @@ void CardSeven::Apply(Grid* pGrid, Player* pPlayer)
 
 	pOut->ClearStatusBar();
 
-	pGrid->PrintErrorMessage("This card Instructs the player to go to a specific cell. ");
+	pGrid->PrintErrorMessage("Restarts the game for the first player whose cell is after the current player in the grid. ");
 
 
 	int changeCellNum = 0;
@@ -49,5 +49,15 @@ void CardSeven::Apply(Grid* pGrid, Player* pPlayer)
 	}
 	else {
 		pGrid->PrintErrorMessage("No Players Found...");
+	}
+}
+
+
+void CardSeven::Save(ofstream& OutFile, int Type) 
+{
+	if (Type == 2) {
+		Card::Save(OutFile, Type);
+		OutFile << endl;
+
 	}
 }

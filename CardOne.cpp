@@ -52,3 +52,12 @@ void CardOne::Apply(Grid* pGrid, Player* pPlayer)
 	int newwallet = pPlayer->GetWallet() - walletAmount;
 	pPlayer->SetWallet(newwallet);
 }
+
+
+void CardOne::Save(ofstream& OutFile, int Type) 
+{
+	if (Type == 2) {
+		Card::Save(OutFile, Type);
+		OutFile << walletAmount << endl;
+	}
+}

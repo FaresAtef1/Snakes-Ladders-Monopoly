@@ -1,10 +1,12 @@
 #include "Ladder.h"
 
 
+int Ladder::LadderCount = 0;
+
 Ladder::Ladder(const CellPosition& startCellPos, const CellPosition& endCellPos) : GameObject(startCellPos)
 {
 	this->endCellPos = endCellPos;
-
+	LadderCount++;
 	///TODO: Do the needed validation
 
 }
@@ -60,10 +62,20 @@ bool Ladder::IsOverlapping(GameObject* newObj) const {
 	return false;
 }
 
+void Ladder::Save(ofstream& OutFile, int Type) 
+{
 
+	if (Type == 0) {
+		GameObject::Save(OutFile, Type);
+		OutFile << this->GetEndPosition().GetCellNum() << endl;
+
+	}
+
+}
 
 
 
 Ladder::~Ladder()
 {
+	LadderCount--;
 }

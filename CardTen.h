@@ -11,5 +11,7 @@ public:
 	CardTen(const CellPosition& cellposition);
 	void ReadCardParameters(Grid* pGrid);
 	void Apply(Grid* pGrid, Player* pPlayer);
+	virtual void Save(ofstream& OutFile, int Type);
+
 };
 
