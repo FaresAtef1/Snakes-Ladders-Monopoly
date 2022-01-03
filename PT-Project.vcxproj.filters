@@ -229,6 +229,12 @@
     <ClCompile Include="PasteCardAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="CardEight.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="CardTwelve.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -384,6 +390,12 @@
     </ClInclude>
     <ClInclude Include="PasteCardAction.h">
       <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="CardEight.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="CardTwelve.h">
+      <Filter>GameObjects\Cards</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
