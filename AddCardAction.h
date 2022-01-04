@@ -1,6 +1,21 @@
 #pragma once
 
 #include "Action.h"
+#include "Input.h"
+#include "Output.h"
+#include "CardOne.h"
+#include"CardTwo.h"
+#include"CardThree.h"
+#include"CardFour.h"
+#include "CardFive.h"
+#include"CardSix.h"	
+#include"CardSeven.h"
+#include"CardEight.h"
+#include"CardNine.h"
+#include"CardTen.h"
+#include"CardEleven.h"
+#include"CardTwelve.h"
+
 
 class AddCardAction : public Action
 {

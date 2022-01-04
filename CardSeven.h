@@ -11,7 +11,10 @@ public:
 
 	virtual void ReadCardParameters(Grid* pGrid);
 
-	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardOne on the passed Player
+	virtual void Apply(Grid* pGrid, Player* pPlayer);
+
+	virtual void Save(ofstream& OutFile, int Type);
+
 	virtual ~CardSeven(); // A Virtual Destructor
 
 };	

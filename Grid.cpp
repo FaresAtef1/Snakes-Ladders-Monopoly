@@ -46,7 +46,7 @@ bool Grid::AddObjectToCell(GameObject* pNewObject)  // think if any validation i
 	if (pos.IsValidCell()) // Check if valid position
 	{
 		// Get the previous GameObject of the Cell
-		GameObject* pPrevObject = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
+		GameObject* pPrevObject = GetGameObjectOfCell(pos);
 
 		if (pPrevObject)  // the cell already contains a game object
 		{
@@ -65,14 +65,14 @@ bool Grid::AddObjectToCell(GameObject* pNewObject)  // think if any validation i
 // Note: You may need to change the return type of this function (Think)
 GameObject* Grid::RemoveObjectFromCell(const CellPosition& pos)
 {
-	GameObject* Temp = NULL;
+	GameObject* TempObject = nullptr;
 	if (pos.IsValidCell()) // Check if valid position
 	{
 		// Note: you can deallocate the object here before setting the pointer to null if it is needed
-		Temp = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
+		TempObject = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
 		CellList[pos.VCell()][pos.HCell()]->SetGameObject(NULL);
 	}
-	return Temp;
+	return TempObject;
 }
 
 void Grid::UpdatePlayerCell(Player* player, const CellPosition& newPosition)
@@ -174,9 +174,37 @@ Ladder* Grid::GetNextLadder(const CellPosition& position)
 	}
 	return NULL; // not found
 }
-int Grid::GetCellNumOfPlayer(int numofplayer) {
+int Grid::GetCellNumOfPlayer(int numofplayer)
+{
 	return PlayerList[numofplayer]->GetCell()->GetCellPosition().GetCellNum();
 }
+
+int Grid::GetLadderCount()
+{
+	return Ladder::LadderCount;
+}
+
+int Grid::GetSnakeCount()
+{
+	return Snake::SnakeCount;
+}
+
+int Grid::GetCardCount() {
+	return Card::CardCount;
+}
+
+//========= Saving function =========
+void Grid::SaveAll(ofstream& OutFile, int Type)
+{
+	for (int i = NumVerticalCells-1; i >= 0; i--) {
+		for (int j = 0; j < NumHorizontalCells; j++) {
+			if (CellList[i][j]->GetGameObject()) {
+				CellList[i][j]->GetGameObject()->Save(OutFile, Type);
+			}
+		}
+	}
+}
+
 
 
 // ========= User Interface Functions =========

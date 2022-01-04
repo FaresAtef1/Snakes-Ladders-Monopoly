@@ -73,6 +73,7 @@ void CardNine::Apply(Grid* pGrid, Player* pPlayer)
 			}
 
 		} while (t!="y" && t!="n");
+		
 	} 
 	else 
 	{
@@ -85,18 +86,10 @@ void CardNine::Apply(Grid* pGrid, Player* pPlayer)
 	}
 }
 
-Player* CardNine::GetOwner()
+void CardNine::Save(ofstream& OutFile, int Type)
 {
-	return Owner;
+	if (Type == 2) {
+		Card::Save(OutFile, Type);
+		OutFile << CardPrice << " " << Fees << endl;
+	}
 }
-
-void CardNine::SetOwner(Player* pNew)
-{
-	Owner = pNew;
-}
-int CardNine::GetCardPrice()
-{
-	return CardPrice;
-}
-
-

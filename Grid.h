@@ -70,6 +70,9 @@ public:
 	GameObject* GetGameObjectOfCell(CellPosition pos);
 	int GetCellNumOfPlayer(int numofplayer);
 	void RestartPlayerWithNum(int numofplayer);
+	int GetLadderCount();
+	int GetSnakeCount();
+	int GetCardCount();
 
 	// ========= User Interface Functions =========
 
@@ -88,6 +91,8 @@ public:
 
 
 	bool IsOverlapping(GameObject* newObj) const;
+
+	void SaveAll(ofstream& OutFile, int Type);
 
 	~Grid(); // A destructor for any needed deallcations
 };

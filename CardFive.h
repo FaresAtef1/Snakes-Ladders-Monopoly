@@ -7,6 +7,7 @@ class CardFive : public Card
 public:
 	CardFive(const CellPosition& pos);
 	virtual void Apply(Grid* pGrid, Player* pPlayer);
+	virtual void Save(ofstream& OutFile, int Type);
 	virtual ~CardFive();
 
 };

@@ -3,11 +3,11 @@
 #include "Action.h"
 #include"Card.h"
 
-class CopyCardAction : public Action
-{  
+class PasteCardAction : public Action
+{
 	CellPosition cardPos;
 public:
-	CopyCardAction(ApplicationManager* pApp);
+	PasteCardAction(ApplicationManager* pApp);
 	virtual void Execute();
 	virtual void ReadActionParameters();
 

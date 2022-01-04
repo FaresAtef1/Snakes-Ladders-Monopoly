@@ -9,3 +9,10 @@ void CardFour::Apply(Grid* pGrid, Player* pPlayer) {
 	pPlayer->SetTurnsDisabled(1);
 
 }
+void CardFour::Save(ofstream& OutFile, int Type)
+{
+	if (Type == 2) {
+		Card::Save(OutFile, Type);
+		OutFile << endl;
+	}
+}

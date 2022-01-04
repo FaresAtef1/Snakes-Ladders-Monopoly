@@ -8,6 +8,11 @@
 #include "DeleteGameObjectAction.h"
 #include "RollDiceAction.h"
 #include "InputDiceValueAction.h"
+#include"CopyCardAction.h"
+#include"PasteCardAction.h"
+#include"CutCardAction.h"
+#include "SaveGridAction.h"
+#include "DeleteGameObject.h"
 
 ///TODO: Add #include for all action types
 
@@ -92,15 +97,23 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case TO_DESIGN_MODE:
 		pOut->CreateDesignModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
 		break;
-	case DELETE_GAME_OBJECT :
-		pAct = new DeleteGameObjectAction(this);
+	case COPY_CARD:
+		pAct = new CopyCardAction(this);
 		break;
-		 
+	case PASTE_CARD:
+		pAct = new PasteCardAction(this);
+		break;
+	case CUT_CARD:
+		pAct = new CutCardAction(this);	
+		break;
 
+	case SAVE_GRID:
+		pAct = new SaveGridAction(this);
+		break;
 
-		///TODO: Add a case for EACH Action type in the Design mode or Play mode
-
-
+	case DELETE_GAME_OBJECT:
+		pAct = new DeleteGameObject(this);
+		break;
 
 	case STATUS:	// a click on the status bar ==> no action
 		return;

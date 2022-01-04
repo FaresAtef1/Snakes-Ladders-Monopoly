@@ -220,11 +220,27 @@
     <ClCompile Include="CardEleven.cpp">
       <Filter>GameObjects\Cards</Filter>
     </ClCompile>
-    <ClCompile Include="CopyCardAction.cpp" />
-    <ClCompile Include="CardEight.cpp" />
-    <ClCompile Include="CardTwelve.cpp" />
-    <ClCompile Include="DeleteGameObjectAction.cpp" />
-    <ClCompile Include="SaveGridAction.cpp" />
+    <ClCompile Include="CopyCardAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="CutCardAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="PasteCardAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="CardEight.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="CardTwelve.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveGridAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="DeleteGameObject.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -372,10 +388,26 @@
     <ClInclude Include="CardEleven.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
-    <ClInclude Include="CopyCardAction.h" />
-    <ClInclude Include="CardEight.h" />
-    <ClInclude Include="CardTwelve.h" />
-    <ClInclude Include="DeleteGameObjectAction.h" />
-    <ClInclude Include="SaveGridAction.h" />
+    <ClInclude Include="CopyCardAction.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="CutCardAction.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="PasteCardAction.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="CardEight.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="CardTwelve.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="DeleteGameObject.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveGridAction.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

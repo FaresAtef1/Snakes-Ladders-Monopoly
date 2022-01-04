@@ -14,3 +14,12 @@ void CardTwo::Apply(Grid* pGrid,Player* pPlayer) {
 	}
 	else pOut->PrintMessage("No ladders ahead....");
  }
+
+
+void CardTwo::Save(ofstream& OutFile, int Type)
+{
+	if (Type == 2) {
+		Card::Save(OutFile, Type);
+		OutFile << endl;
+	}
+}

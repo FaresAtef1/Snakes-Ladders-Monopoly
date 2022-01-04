@@ -1,14 +1,12 @@
 #pragma once
-
 #include "Action.h"
 #include"Card.h"
-
-class CopyCardAction : public Action
-{  
+class CutCardAction :  public Action
+{
 	CellPosition cardPos;
 public:
-	CopyCardAction(ApplicationManager* pApp);
+	CutCardAction(ApplicationManager* pApp);
 	virtual void Execute();
 	virtual void ReadActionParameters();
-
 };
+

@@ -88,16 +88,10 @@ void CardEleven::Apply(Grid* pGrid, Player* pPlayer)
 
 }
 
-Player* CardEleven::GetOwner()
+void CardEleven::Save(ofstream& OutFile, int Type)
 {
-	return Owner;
+	if (Type == 2) {
+		Card::Save(OutFile, Type);
+		OutFile << CardPrice << " " << Fees << endl;
+	}
 }
-void CardEleven::SetOwner(Player* pNew)
-{
-	Owner = pNew;
-}
-int CardEleven::GetCardPrice()
-{
-	return CardPrice;
-}
-
