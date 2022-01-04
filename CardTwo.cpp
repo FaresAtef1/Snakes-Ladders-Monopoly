@@ -23,3 +23,8 @@ void CardTwo::Save(ofstream& OutFile, int Type)
 		OutFile << endl;
 	}
 }
+
+void CardTwo::Load(ifstream& Infile)
+{
+	Card::Load(Infile);
+}

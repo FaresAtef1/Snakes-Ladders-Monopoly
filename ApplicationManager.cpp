@@ -12,7 +12,9 @@
 #include"PasteCardAction.h"
 #include"CutCardAction.h"
 #include "SaveGridAction.h"
+#include "OpenAction.h"
 #include "DeleteGameObject.h"
+
 
 ///TODO: Add #include for all action types
 
@@ -109,6 +111,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 	case SAVE_GRID:
 		pAct = new SaveGridAction(this);
+		break;
+
+	case OPEN_GRID:
+		pAct = new OpenAction(this);
 		break;
 
 	case DELETE_GAME_OBJECT:

@@ -16,3 +16,8 @@ void CardFour::Save(ofstream& OutFile, int Type)
 		OutFile << endl;
 	}
 }
+
+void CardFour::Load(ifstream& Infile)
+{
+	Card::Load(Infile);
+}

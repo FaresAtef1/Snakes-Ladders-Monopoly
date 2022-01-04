@@ -2,11 +2,16 @@
 
 #include "Card.h"
 
+
 class CardSix : public Card
 {
 private:
 
-	CellPosition CellToMoveTo;
+	static CellPosition CellToMoveTo;
+
+	static bool IsRead;
+
+	static bool IsSaved;
 
 public:
 
@@ -17,6 +22,8 @@ public:
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardOne on the passed Player
 						                              // by decrementing the player's wallet by the walletAmount data member
 	virtual void Save(ofstream& OutFile, int Type);
+
+	virtual void Load(ifstream& Infile);
 
 	virtual ~CardSix(); // A Virtual Destructor
 

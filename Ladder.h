@@ -24,6 +24,7 @@ public:
 
 	virtual void Save(ofstream& OutFile, int Type);
 
+	virtual void Load(ifstream& Infile);
 
 	virtual ~Ladder(); // Virtual destructor
 };
