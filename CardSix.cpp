@@ -1,6 +1,12 @@
 #include "CardSix.h"
 
 
+CellPosition CardSix::CellToMoveTo = CellPosition(0);
+
+bool CardSix::IsRead = false;
+
+bool CardSix::IsSaved = false;
+
 CardSix::CardSix(const CellPosition& pos) : Card(pos) // set the cell position of the card
 {
 	cardNumber = 6; // set the inherited cardNumber data member with the card number (1 here)
@@ -28,8 +34,11 @@ void CardSix::ReadCardParameters(Grid* pGrid)
 
 	// reads the cell that the player will move to after standing on the card
 
-	pOut->PrintMessage("New CardSix: Click on the cell to move to  ...");
-	CellToMoveTo = pIn->GetCellClicked();
+	if (!IsRead) {
+		pOut->PrintMessage("New CardSix: Click on the cell to move to  ...");
+		CellToMoveTo = pIn->GetCellClicked();
+		IsRead = true;
+	}
 
 
 	// 3- Clear the status bar
@@ -62,10 +71,28 @@ void CardSix::Apply(Grid* pGrid, Player* pPlayer)
 }
 
 
-void  CardSix::Save(ofstream& OutFile, int Type) 
+void  CardSix::Save(ofstream& OutFile, int Type)
 {
-	if (Type == 2) {
+	if (Type == 2)
+	{
 		Card::Save(OutFile, Type);
-		OutFile << this->CellToMoveTo.GetCellNum() << endl;
+		if (!IsSaved)
+			OutFile << this->CellToMoveTo.GetCellNum() ;
+		IsSaved = true;
+		OutFile << endl;
 	}
+}
+
+void CardSix::Load(ifstream& Infile) 
+{
+	Card::Load(Infile);
+	if (!IsRead) 
+	{
+		int CellNum;
+		Infile >> CellNum;
+		CellToMoveTo = CellPosition::GetCellPositionFromNum(CellNum);
+		IsRead = true;
+	}
+	IsRead = true;
+
 }

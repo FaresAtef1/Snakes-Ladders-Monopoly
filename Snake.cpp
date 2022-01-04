@@ -74,6 +74,16 @@ void Snake::Save(ofstream& OutFile, int Type)
 	}
 }
 
+void Snake::Load(ifstream& Infile) 
+{
+	int StartPos, EndPos;
+	Infile >> StartPos >> EndPos;
+	this->position = CellPosition::GetCellPositionFromNum(StartPos);
+	this->endCellPos = CellPosition::GetCellPositionFromNum(EndPos);
+}
+
+
+
 Snake::~Snake()
 {
 	SnakeCount--;

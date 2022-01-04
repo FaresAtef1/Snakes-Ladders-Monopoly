@@ -61,3 +61,7 @@ void CardSeven::Save(ofstream& OutFile, int Type)
 
 	}
 }
+void CardSeven::Load(ifstream& Infile)
+{
+	Card::Load(Infile);
+}

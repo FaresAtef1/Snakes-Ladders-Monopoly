@@ -20,6 +20,8 @@ public:
 	                                                  // by decrementing the player's wallet by the walletAmount data member
 	virtual void Save(ofstream& OutFile, int Type);
 
+	virtual void Load(ifstream& Infile);
+
 	virtual ~CardOne(); // A Virtual Destructor
 };
 

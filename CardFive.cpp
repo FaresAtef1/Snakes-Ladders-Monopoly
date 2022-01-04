@@ -32,3 +32,8 @@ void CardFive::Save(ofstream& OutFile, int Type)
 	}
 }
 
+
+void CardFive::Load(ifstream& Infile)
+{
+	Card::Load(Infile);
+}

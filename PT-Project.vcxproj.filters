@@ -241,6 +241,7 @@
     <ClCompile Include="DeleteGameObject.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="OpenAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -403,11 +404,12 @@
     <ClInclude Include="CardTwelve.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
-    <ClInclude Include="DeleteGameObject.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
     <ClInclude Include="SaveGridAction.h">
       <Filter>Actions</Filter>
     </ClInclude>
+    <ClInclude Include="DeleteGameObject.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenAction.h" />
   </ItemGroup>
 </Project>
