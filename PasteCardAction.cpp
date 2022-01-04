@@ -17,6 +17,7 @@ void PasteCardAction::Execute()
 	ReadActionParameters();
 	Grid* pGrid = pManager->GetGrid();
 	Card* Clip = pGrid->GetClipboard();
+	Card  temp(cardPos);
 	if ( (bool)Clip && cardPos.IsValidCell())
 	{
 		Card* Pasted;
@@ -27,7 +28,7 @@ void PasteCardAction::Execute()
 			if (pGrid->GetGameObjectOfCell(Clip->GetPosition()) == Clip)
 			{
 				Pasted = new CardOne(cardPos);
-				Card  temp = *Pasted;
+				 temp = *Pasted;
 				*((CardOne*)Pasted) = *((CardOne*)Clip);
 				*Pasted = temp;
 				pGrid->AddObjectToCell(Pasted);
@@ -44,7 +45,7 @@ void PasteCardAction::Execute()
 			if (pGrid->GetGameObjectOfCell(Clip->GetPosition()) == Clip)
 			{
 				Pasted = new CardTwo(cardPos);
-				Card  temp = *Pasted;
+			      temp = *Pasted;
 				*((CardTwo*)Pasted) = *((CardTwo*)Clip);
 				*Pasted = temp;
 				pGrid->AddObjectToCell(Pasted);
@@ -61,7 +62,7 @@ void PasteCardAction::Execute()
 			if (pGrid->GetGameObjectOfCell(Clip->GetPosition()) == Clip)
 			{
 				Pasted = new CardThree(cardPos);
-				Card  temp = *Pasted;
+				  temp = *Pasted;
 				*((CardThree*)Pasted) = *((CardThree*)Clip);
 				*Pasted = temp;
 				pGrid->AddObjectToCell(Pasted);
@@ -78,7 +79,7 @@ void PasteCardAction::Execute()
 			if (pGrid->GetGameObjectOfCell(Clip->GetPosition()) == Clip)
 			{
 				Pasted = new CardFour(cardPos);
-				Card  temp = *Pasted;
+				  temp = *Pasted;
 				*((CardFour*)Pasted) = *((CardFour*)Clip);
 				*Pasted = temp;
 				pGrid->AddObjectToCell(Pasted);
@@ -97,7 +98,7 @@ void PasteCardAction::Execute()
 			if (pGrid->GetGameObjectOfCell(Clip->GetPosition()) == Clip)
 			{
 				Pasted = new CardSix(cardPos);
-				Card  temp = *Pasted;
+				  temp = *Pasted;
 				*((CardSix*)Pasted) = *((CardSix*)Clip);
 				*Pasted = temp;
 				pGrid->AddObjectToCell(Pasted);
@@ -113,7 +114,7 @@ void PasteCardAction::Execute()
 			if (pGrid->GetGameObjectOfCell(Clip->GetPosition()) == Clip)
 			{
 				Pasted = new CardSeven(cardPos);
-				Card  temp = *Pasted;
+				  temp = *Pasted;
 				*((CardSeven*)Pasted) = *((CardSeven*)Clip);
 				*Pasted = temp;
 				pGrid->AddObjectToCell(Pasted);
@@ -132,7 +133,7 @@ void PasteCardAction::Execute()
 			if (pGrid->GetGameObjectOfCell(Clip->GetPosition()) == Clip)
 			{
 				Pasted = new CardNine(cardPos);
-				Card  temp = *Pasted;
+				  temp = *Pasted;
 				*((CardNine*)Pasted) = *((CardNine*)Clip);
 				*Pasted = temp;
 				pGrid->AddObjectToCell(Pasted);
@@ -148,7 +149,7 @@ void PasteCardAction::Execute()
 			if (pGrid->GetGameObjectOfCell(Clip->GetPosition()) == Clip)
 			{
 				Pasted = new CardTen(cardPos);
-				Card  temp = *Pasted;
+				  temp = *Pasted;
 				*((CardTen*)Pasted) = *((CardTen*)Clip);
 				*Pasted = temp;
 				pGrid->AddObjectToCell(Pasted);
@@ -164,7 +165,7 @@ void PasteCardAction::Execute()
 			if (pGrid->GetGameObjectOfCell(Clip->GetPosition()) == Clip)
 			{
 				Pasted = new CardEleven(cardPos);
-				Card  temp = *Pasted;
+				  temp = *Pasted;
 				*((CardEleven*)Pasted) = *((CardEleven*)Clip);
 				*Pasted = temp;
 				pGrid->AddObjectToCell(Pasted);

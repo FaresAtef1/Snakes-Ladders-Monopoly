@@ -29,6 +29,10 @@ void DeleteGameObject::ReadActionParameters() {
 void DeleteGameObject::Execute() {
 	ReadActionParameters();
 	Grid* pGrid = pManager->GetGrid();
+	if (pGrid->GetGameObjectOfCell(Pos) == (GameObject*) pGrid->GetClipboard())
+	{
+		pGrid->SetClipboard(nullptr);
+	}
 	delete pGrid->RemoveObjectFromCell(Pos);
 
 }
