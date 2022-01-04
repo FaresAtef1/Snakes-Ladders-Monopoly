@@ -1,6 +1,4 @@
 #include "CardNine.h"
-bool CardNine::Placed = false;
-bool CardNine::Owned = false;
 int  CardNine::CardPrice=0;
 int  CardNine::Fees=0;
 Player* CardNine::Owner=nullptr;
@@ -12,7 +10,7 @@ CardNine::CardNine(const CellPosition& cellposition) :Card(cellposition)
 
 void CardNine::ReadCardParameters(Grid* pGrid) 
 {   
-	if (!Placed) {
+	if (Fees==0) {
 		Output* pOut = pGrid->GetOutput();
 		Input* pIn = pGrid->GetInput();
 		pGrid->PrintErrorMessage("Card Nine : Station 1 , click to continue..");
@@ -38,7 +36,6 @@ void CardNine::ReadCardParameters(Grid* pGrid)
 			else pOut->PrintMessage("Invalid Fees value ! please try again.");
 		} while (t <= 0);
 		pOut->ClearStatusBar();
-		Placed = true;
 	}
 	
 }
@@ -46,7 +43,7 @@ void CardNine::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
-	if (!Owned)
+	if (!Owner)
 	{
 		Card::Apply(pGrid, pPlayer);
 		pGrid->PrintErrorMessage("This is station 1 , Price : " + to_string(CardPrice) + "  Fees : " + to_string(Fees) + " click to continue...");
@@ -61,7 +58,6 @@ void CardNine::Apply(Grid* pGrid, Player* pPlayer)
 					pPlayer->SetWallet(pPlayer->GetWallet() - CardPrice);
 					Owner = pPlayer;
 					pOut->PrintMessage("Purchase complete .");
-					Owned = true;
 				}
 				else
 				{
