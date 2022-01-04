@@ -1,11 +1,13 @@
 #pragma once
 
+
 #include "Grid.h"
 #include "Cell.h"
 
 class Player
 {
 	Cell * pCell;		   // pointer to the current Cell of the player
+	
 	
 	const int playerNum;   // the player number (from 0 to MaxPlayerCount-1)
 	                       // player number does NOT change after construction (const.)
@@ -16,7 +18,6 @@ class Player
 	int turnCount;         // a counter that starts with 0, is incremented with each dice roll
 	                       // and reset again when reached 3
 	                       // it is used to indicate when to move and when to add to your wallet
-	
 public:
 
 	Player(Cell * pCell, int playerNum); // Constructor making any needed initializations
@@ -28,6 +29,7 @@ public:
 
 	void SetWallet(int wallet);		// A setter for the wallet
 	int GetWallet() const;			// a getter for the wallet
+
 
 	int GetTurnCount() const;		// A getter for the turnCount
 
@@ -56,4 +58,7 @@ public:
 	                                                   // for example: P0(wallet, turnCount)
 
 };
+
+
+
 

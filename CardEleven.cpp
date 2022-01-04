@@ -88,3 +88,16 @@ void CardEleven::Apply(Grid* pGrid, Player* pPlayer)
 
 }
 
+Player* CardEleven::GetOwner()
+{
+	return Owner;
+}
+void CardEleven::SetOwner(Player* pNew)
+{
+	Owner = pNew;
+}
+int CardEleven::GetCardPrice()
+{
+	return CardPrice;
+}
+

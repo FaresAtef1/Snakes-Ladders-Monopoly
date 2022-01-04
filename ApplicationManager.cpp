@@ -5,7 +5,7 @@
 #include "AddSnakeAction.h"
 #include "AddCardAction.h"
 #include "CopyCardAction.h"
-
+#include "DeleteGameObjectAction.h"
 #include "RollDiceAction.h"
 #include "InputDiceValueAction.h"
 
@@ -92,7 +92,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case TO_DESIGN_MODE:
 		pOut->CreateDesignModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
 		break;
-
+	case DELETE_GAME_OBJECT :
+		pAct = new DeleteGameObjectAction(this);
+		break;
+		 
 
 
 		///TODO: Add a case for EACH Action type in the Design mode or Play mode

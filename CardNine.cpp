@@ -73,7 +73,6 @@ void CardNine::Apply(Grid* pGrid, Player* pPlayer)
 			}
 
 		} while (t!="y" && t!="n");
-		
 	} 
 	else 
 	{
@@ -85,4 +84,19 @@ void CardNine::Apply(Grid* pGrid, Player* pPlayer)
 		}
 	}
 }
+
+Player* CardNine::GetOwner()
+{
+	return Owner;
+}
+
+void CardNine::SetOwner(Player* pNew)
+{
+	Owner = pNew;
+}
+int CardNine::GetCardPrice()
+{
+	return CardPrice;
+}
+
 

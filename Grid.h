@@ -40,7 +40,7 @@ public:
 
 	bool AddObjectToCell(GameObject* pNewObject);		 // Adds a GameObject to the Cell of its "position" data member
 														 // only if the Cell does NOT already contain an object, 										 // otherwise return false and don't add
-	void RemoveObjectFromCell(const CellPosition& pos); // Removes the GameObject of the Cell of the passed "position"
+	GameObject* RemoveObjectFromCell(const CellPosition& pos); // Removes the GameObject of the Cell of the passed "position"
 														 // Note: You may need to change the return type of this function (Think) 
 	void UpdatePlayerCell(Player* player, const CellPosition& newPosition); // Update the player's pCell with the CellList's Cell pointer of the "newPosition",
 																			  // Clears the player's circle from the previous cell
@@ -57,7 +57,9 @@ public:
 	void SetEndGame(bool endGame);	 // A setter for endGame data member
 	bool GetEndGame() const;		 // A getter for endGame data member
 
+	int GetPlayerWallet(int Number) const;
 	void AdvanceCurrentPlayer();     // Increments the currPlayerNum and if reaches MaxPlayerCount reset to 0 (using %)
+
 
 	///TODO: add any needed setter/getter "EXCEPT" ANY setters or getters of "CellList" or "PlayerList" (Forbidden for class Responsibilities)
 

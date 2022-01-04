@@ -2,6 +2,7 @@
 
 #include "GameObject.h"
 
+
 Player::Player(Cell* pCell, int playerNum) : stepCount(0), wallet(100), playerNum(playerNum)
 {
 	this->pCell = pCell;
@@ -10,6 +11,7 @@ Player::Player(Cell* pCell, int playerNum) : stepCount(0), wallet(100), playerNu
 	// Make all the needed initialization or validations
 	SetCell(pCell);
 
+	
 
 
 }
@@ -29,9 +31,13 @@ Cell* Player::GetCell() const
 void Player::SetWallet(int wallet)
 {
 	this->wallet = wallet;
+	
+
 	// Make any needed validations
-	if (this->wallet < 0) {
+	if (this->wallet < 0)
+	{
 		this->wallet = 0;
+	
 	}
 }
 
@@ -39,6 +45,8 @@ int Player::GetWallet() const
 {
 	return wallet;
 }
+
+
 
 int Player::GetTurnCount() const
 {

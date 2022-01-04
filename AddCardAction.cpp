@@ -73,7 +73,7 @@ void AddCardAction::Execute()
 		break;
 	case 4:
 		pCard = new CardFour(cardPosition);
-	break;
+		break;
 	case 5:
 		pCard = new CardFive(cardPosition);
 		break;

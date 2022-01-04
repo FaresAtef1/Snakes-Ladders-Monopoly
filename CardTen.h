@@ -11,5 +11,8 @@ public:
 	CardTen(const CellPosition& cellposition);
 	void ReadCardParameters(Grid* pGrid);
 	void Apply(Grid* pGrid, Player* pPlayer);
+	Player* GetOwner();
+	void SetOwner(Player* pNew);
+	int GetCardPrice();
 };
 
