@@ -18,6 +18,8 @@ class Player
 	int turnCount;         // a counter that starts with 0, is incremented with each dice roll
 	                       // and reset again when reached 3
 	                       // it is used to indicate when to move and when to add to your wallet
+	static int EqualWallets;// it is a static variable which is the wallet of one of two players if they are equal
+
 public:
 
 	Player(Cell * pCell, int playerNum); // Constructor making any needed initializations
@@ -37,9 +39,13 @@ public:
 	int getTurnsDisabled() const;
 
 	int GetjustRolledDiceNum() const;
+	int GetEqualWallets()const;     // A getter for the amount that the two poorest players have
 
 	int getPlayerNum() const;
 	///TODO: You can add setters and getters for data members here (if needed)
+
+	Player* GetPoor(Player* P2);
+	bool IsEqualWallets();
 
 	// ====== Drawing Functions ======
 

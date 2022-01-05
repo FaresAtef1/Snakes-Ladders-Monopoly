@@ -73,6 +73,7 @@ public:
 	int GetLadderCount();
 	int GetSnakeCount();
 	int GetCardCount();
+	Player* GetPoorest();
 
 	// ========= User Interface Functions =========
 

@@ -1,7 +1,6 @@
 #include "Player.h"
-
 #include "GameObject.h"
-
+int Player::EqualWallets = -1; // initializing it with -1 refers to that until now no players have the same amount of money
 
 Player::Player(Cell* pCell, int playerNum) : stepCount(0), wallet(100), playerNum(playerNum)
 {
@@ -10,9 +9,6 @@ Player::Player(Cell* pCell, int playerNum) : stepCount(0), wallet(100), playerNu
 	this->SetTurnsDisabled(0);
 	// Make all the needed initialization or validations
 	SetCell(pCell);
-
-	
-
 
 }
 
@@ -32,12 +28,10 @@ void Player::SetWallet(int wallet)
 {
 	this->wallet = wallet;
 	
-
 	// Make any needed validations
 	if (this->wallet < 0)
 	{
 		this->wallet = 0;
-	
 	}
 }
 
@@ -62,8 +56,34 @@ int Player::GetjustRolledDiceNum() const
 {
 	return justRolledDiceNum;
 }
+int Player::GetEqualWallets()const
+{
+	return EqualWallets;
+}
 int Player::getPlayerNum() const {
 	return playerNum;
+}
+Player* Player::GetPoor(Player* P2)
+{
+	if (GetWallet() < P2->GetWallet())
+		return this;
+	else if (GetWallet() > P2->GetWallet())
+		return P2;
+	else // They have the same amount of money
+	{
+		EqualWallets = GetWallet();  
+		return this;
+	}
+}
+bool Player::IsEqualWallets()
+{
+	if (EqualWallets == -1)
+		return false;
+	else
+	{
+		EqualWallets = -1;
+		return true;
+	}
 }
 
 // ====== Drawing Functions ======

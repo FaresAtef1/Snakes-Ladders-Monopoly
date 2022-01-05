@@ -193,6 +193,16 @@ int Grid::GetCardCount() {
 	return Card::CardCount;
 }
 
+Player* Grid::GetPoorest()
+{
+	Player* Poorest = PlayerList[0];
+	for(int i = 1; i < MaxPlayerCount; i++)
+		Poorest = Poorest->GetPoor(PlayerList[i]);
+
+	return Poorest;
+}
+
+
 //========= Saving function =========
 void Grid::SaveAll(ofstream& OutFile, int Type)
 {

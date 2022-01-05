@@ -2,6 +2,7 @@
 int  CardEleven::CardPrice = 0;
 int  CardEleven::Fees = 0;
 Player* CardEleven::Owner = nullptr;
+bool CardEleven::IsSaved = false;
 
 CardEleven::CardEleven(const CellPosition& cellposition) :Card(cellposition)
 {
@@ -83,11 +84,29 @@ void CardEleven::Apply(Grid* pGrid, Player* pPlayer)
 
 
 }
+Player* CardEleven::GetOwner()
+{
+	return Owner;
+}
+void CardEleven::SetOwner(Player* pNew)
+{
+	Owner = pNew;
+}
+int CardEleven::GetCardPrice()
+{
+	return CardPrice;
+}
 
 void CardEleven::Save(ofstream& OutFile, int Type)
 {
-	if (Type == 2) {
+	if (Type == 2)
+	{
 		Card::Save(OutFile, Type);
-		OutFile << CardPrice << " " << Fees << endl;
+		if (!IsSaved)
+		{
+			OutFile << CardPrice << " " << Fees;
+			IsSaved = true;
+		}
+		OutFile << endl;
 	}
 }

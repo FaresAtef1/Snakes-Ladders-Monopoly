@@ -2,6 +2,7 @@
 int  CardTen::CardPrice = 0;
 int  CardTen::Fees = 0;
 Player* CardTen::Owner = nullptr;
+bool CardTen::IsSaved = false;
 
 CardTen::CardTen(const CellPosition& cellposition) :Card(cellposition)
 {
@@ -98,9 +99,15 @@ int CardTen::GetCardPrice()
 
 void CardTen::Save(ofstream& OutFile, int Type)
 {
-	if (Type == 2) {
+	if (Type == 2)
+	{
 		Card::Save(OutFile, Type);
-		OutFile << CardPrice << " " << Fees << endl;
+		if (!IsSaved)
+		{
+			OutFile << CardPrice << " " << Fees;
+			IsSaved = true;
+		}
+		OutFile << endl;
 	}
 }
 
