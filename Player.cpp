@@ -1,6 +1,6 @@
 #include "Player.h"
-
 #include "GameObject.h"
+int Player::EqualWallets = -1; // initializing it with -1 refers to that until now no players have the same amount of money
 
 Player::Player(Cell* pCell, int playerNum) : stepCount(0), wallet(100), playerNum(playerNum)
 {
@@ -9,8 +9,6 @@ Player::Player(Cell* pCell, int playerNum) : stepCount(0), wallet(100), playerNu
 	this->SetTurnsDisabled(0);
 	// Make all the needed initialization or validations
 	SetCell(pCell);
-
-
 
 }
 
@@ -29,8 +27,10 @@ Cell* Player::GetCell() const
 void Player::SetWallet(int wallet)
 {
 	this->wallet = wallet;
+	
 	// Make any needed validations
-	if (this->wallet < 0) {
+	if (this->wallet < 0)
+	{
 		this->wallet = 0;
 	}
 }
@@ -44,18 +44,61 @@ int Player::GetTurnCount() const
 {
 	return turnCount;
 }
-void Player::SetTurnsDisabled(int t) {
+
+void Player::SetTurnCount(int t)
+{
+	if (t<5 && t>-1)
+		turnCount = t;
+	else
+		turnCount = 0;
+}
+
+void Player::SetTurnsDisabled(int t) 
+{
 	TurnsDisabled = (t >= 0) ? t : 0;
 }
-int Player::getTurnsDisabled() const {
+
+int Player::getTurnsDisabled() const 
+{
 	return TurnsDisabled;
 }
+
 int Player::GetjustRolledDiceNum() const
 {
 	return justRolledDiceNum;
 }
+
+int Player::GetEqualWallets()const
+{
+	return EqualWallets;
+}
+
 int Player::getPlayerNum() const {
 	return playerNum;
+}
+
+Player* Player::GetPoor(Player* P2)
+{
+	if (GetWallet() < P2->GetWallet())
+		return this;
+	else if (GetWallet() > P2->GetWallet())
+		return P2;
+	else // They have the same amount of money
+	{
+		EqualWallets = GetWallet();  
+		return this;
+	}
+}
+
+bool Player::IsEqualWallets()
+{
+	if (EqualWallets == -1)
+		return false;
+	else
+	{
+		EqualWallets = -1;
+		return true;
+	}
 }
 
 // ====== Drawing Functions ======

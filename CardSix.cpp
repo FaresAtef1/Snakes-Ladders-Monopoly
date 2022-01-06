@@ -1,11 +1,7 @@
 #include "CardSix.h"
 
 
-CellPosition CardSix::CellToMoveTo = CellPosition(0);
 
-bool CardSix::IsRead = false;
-
-bool CardSix::IsSaved = false;
 
 CardSix::CardSix(const CellPosition& pos) : Card(pos) // set the cell position of the card
 {
@@ -29,22 +25,23 @@ void CardSix::ReadCardParameters(Grid* pGrid)
 
 
 	// 1- Get a Pointer to the Input / Output Interfaces from the Grid
+	// 1- Get a Pointer to the Input / Output Interfaces from the Grid
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
 
 	// reads the cell that the player will move to after standing on the card
 
-	if (!IsRead) {
-		pOut->PrintMessage("New CardSix: Click on the cell to move to  ...");
+	pOut->PrintMessage("New CardSix: Click on the cell to move to  ...");
+	CellToMoveTo = pIn->GetCellClicked();
+	while (CellToMoveTo.GetCellNum() == this->position.GetCellNum()) {
+		pOut->PrintMessage("You cannot choose this cell, Try Again");
 		CellToMoveTo = pIn->GetCellClicked();
-		IsRead = true;
-	}
 
+	}
 
 	// 3- Clear the status bar
 	pOut->ClearStatusBar();
 }
-
 
 void CardSix::Apply(Grid* pGrid, Player* pPlayer)
 {
@@ -55,11 +52,8 @@ void CardSix::Apply(Grid* pGrid, Player* pPlayer)
 	Card::Apply(pGrid, pPlayer);
 
 	pOut->ClearStatusBar();
-
 	pGrid->PrintErrorMessage("Move to cell number : " + to_string(CellToMoveTo.GetCellNum()));
 	// Move the player
-	if (CellToMoveTo.GetCellNum() == position.GetCellNum()) {
-	}
 	pGrid->UpdatePlayerCell(pPlayer, CellToMoveTo);
 	
 	GameObject* pObj = pPlayer->GetCell()->GetGameObject();
@@ -71,28 +65,19 @@ void CardSix::Apply(Grid* pGrid, Player* pPlayer)
 }
 
 
-void  CardSix::Save(ofstream& OutFile, int Type)
+void  CardSix::Save(ofstream& OutFile, int Type) 
 {
-	if (Type == 2)
+	if (Type == 2) 
 	{
 		Card::Save(OutFile, Type);
-		if (!IsSaved)
-			OutFile << this->CellToMoveTo.GetCellNum() ;
-		IsSaved = true;
-		OutFile << endl;
+		OutFile << this->CellToMoveTo.GetCellNum() << endl;
 	}
 }
 
-void CardSix::Load(ifstream& Infile) 
-{
-	Card::Load(Infile);
-	if (!IsRead) 
-	{
-		int CellNum;
-		Infile >> CellNum;
-		CellToMoveTo = CellPosition::GetCellPositionFromNum(CellNum);
-		IsRead = true;
-	}
-	IsRead = true;
 
+void CardSix::Load(ifstream& Infile) {
+	Card::Load(Infile);
+	int CellNum;
+	Infile >> CellNum;
+	CellToMoveTo = CellPosition::GetCellPositionFromNum(CellNum);
 }

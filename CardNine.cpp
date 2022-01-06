@@ -2,6 +2,9 @@
 int  CardNine::CardPrice=0;
 int  CardNine::Fees=0;
 Player* CardNine::Owner=nullptr;
+bool CardNine::IsSaved = false;
+bool CardNine::IsRead = false;
+
 
 CardNine::CardNine(const CellPosition& cellposition) :Card(cellposition)
 {
@@ -81,11 +84,49 @@ void CardNine::Apply(Grid* pGrid, Player* pPlayer)
 		}
 	}
 }
+Player* CardNine::GetOwner()
+{
+	return Owner;
+}
+void CardNine::SetOwner(Player* pNew)
+{
+	Owner = pNew;
+}
+int CardNine::GetCardPrice()
+{
+	return CardPrice;
+}
 
 void CardNine::Save(ofstream& OutFile, int Type)
 {
-	if (Type == 2) {
+	if (Type == 2) 
+	{
 		Card::Save(OutFile, Type);
-		OutFile << CardPrice << " " << Fees << endl;
+		if (!IsSaved) 
+		{
+			OutFile << CardPrice << " " << Fees;
+			IsSaved = true;
+		}
+		OutFile << endl;
 	}
+}
+
+void CardNine::Load(ifstream& Infile)
+{
+	Card::Load(Infile);
+	if (!IsRead)
+	{
+		Infile >> CardPrice >> Fees;
+		IsRead = true;
+	}
+}
+
+void CardNine::SetIsSavedF()
+{
+	IsSaved = false;
+}
+
+void CardNine::SetIsReadF()
+{
+	IsRead = false;
 }

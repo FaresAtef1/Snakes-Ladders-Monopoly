@@ -57,7 +57,10 @@ public:
 	void SetEndGame(bool endGame);	 // A setter for endGame data member
 	bool GetEndGame() const;		 // A getter for endGame data member
 
+	int GetPlayerWallet(int Number) const;
 	void AdvanceCurrentPlayer();     // Increments the currPlayerNum and if reaches MaxPlayerCount reset to 0 (using %)
+
+	void Restart();
 
 	///TODO: add any needed setter/getter "EXCEPT" ANY setters or getters of "CellList" or "PlayerList" (Forbidden for class Responsibilities)
 
@@ -71,6 +74,7 @@ public:
 	int GetLadderCount();
 	int GetSnakeCount();
 	int GetCardCount();
+	Player* GetPoorest();
 
 	// ========= User Interface Functions =========
 
@@ -91,6 +95,8 @@ public:
 	bool IsOverlapping(GameObject* newObj) const;
 
 	void SaveAll(ofstream& OutFile, int Type);
+
+	void ClearGridArea();
 
 	~Grid(); // A destructor for any needed deallcations
 };

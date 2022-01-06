@@ -131,10 +131,31 @@ bool Grid::GetEndGame() const
 	return endGame;
 }
 
+int Grid::GetPlayerWallet(int Number) const
+{
+	return PlayerList[Number]->GetWallet();
+}
+
+
 void Grid::AdvanceCurrentPlayer()
 {
 	currPlayerNumber = (currPlayerNumber + 1) % MaxPlayerCount; // this generates value from 0 to MaxPlayerCount - 1
 }
+
+void Grid::Restart()
+{
+	CellPosition NewCell(1);
+	currPlayerNumber = 0;
+	for (int i = 0; i < MaxPlayerCount; i++)
+	{
+		PlayerList[i]->SetWallet(100);
+		UpdatePlayerCell(PlayerList[i], NewCell);
+		PlayerList[i]->SetTurnCount(0);
+		PlayerList[i]->SetTurnsDisabled(0);
+	}
+		UpdateInterface();
+}
+
 void Grid::RestartPlayerWithNum(int numofplayer) {
 	UpdatePlayerCell(PlayerList[numofplayer], CellPosition::GetCellPositionFromNum(1));
 }
@@ -187,13 +208,40 @@ int Grid::GetCardCount() {
 	return Card::CardCount;
 }
 
+Player* Grid::GetPoorest()
+{
+	Player* Poorest = PlayerList[0];
+	for(int i = 1; i < MaxPlayerCount; i++)
+		Poorest = Poorest->GetPoor(PlayerList[i]);
+
+	return Poorest;
+}
+
+
 //========= Saving function =========
 void Grid::SaveAll(ofstream& OutFile, int Type)
 {
-	for (int i = NumVerticalCells-1; i >= 0; i--) {
-		for (int j = 0; j < NumHorizontalCells; j++) {
-			if (CellList[i][j]->GetGameObject()) {
+	for (int i = NumVerticalCells-1; i >= 0; i--) 
+	{
+		for (int j = 0; j < NumHorizontalCells; j++) 
+		{
+			if (CellList[i][j]->GetGameObject()) 
+			{
 				CellList[i][j]->GetGameObject()->Save(OutFile, Type);
+			}
+		}
+	}
+}
+
+void Grid::ClearGridArea()
+{
+	for (int i = NumVerticalCells - 1; i >= 0; i--)
+	{
+		for (int j = 0; j < NumHorizontalCells; j++)
+		{
+			if (CellList[i][j]->GetGameObject())
+			{
+				delete RemoveObjectFromCell(CellList[i][j]->GetCellPosition());
 			}
 		}
 	}
@@ -261,7 +309,8 @@ void Grid::PrintErrorMessage(string msg)
 }
 
 
-bool Grid::IsOverlapping(GameObject* newObj) const {
+bool Grid::IsOverlapping(GameObject* newObj) const 
+{
 
 	int H = newObj->GetPosition().HCell();
 	for (int V = 0; V < NumVerticalCells; V++) {

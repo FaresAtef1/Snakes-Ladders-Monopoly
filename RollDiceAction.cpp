@@ -18,7 +18,6 @@ void RollDiceAction::Execute()
 {
 		Grid* pGrid = pManager->GetGrid();
 		Output* pOut = pGrid->GetOutput();
-		Input* pIn = pGrid->GetInput();  //8************** hatt4al wel mafrod a2ol l gheith
 		
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 

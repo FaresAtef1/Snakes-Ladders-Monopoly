@@ -20,8 +20,6 @@ void CardFive::Apply(Grid* pGrid, Player* pPlayer)
 	NewPosition.AddCellNum(-2 * pPlayer->GetjustRolledDiceNum());
 	
 	pGrid->UpdatePlayerCell(pPlayer, NewPosition);
-
-
 }
 
 void CardFive::Save(ofstream& OutFile, int Type)

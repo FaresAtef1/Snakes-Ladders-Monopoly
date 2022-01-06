@@ -62,7 +62,7 @@ void AddCardAction::Execute()
 		break;
 	case 4:
 		pCard = new CardFour(cardPosition);
-	break;
+		break;
 	case 5:
 		pCard = new CardFive(cardPosition);
 		break;
@@ -84,10 +84,10 @@ void AddCardAction::Execute()
 	case 11:
 		pCard = new CardEleven(cardPosition);
 		break;
-	/*case 12:
-		pCard = new Cardtwelve(cardPosition);
+	case 12:
+		pCard = new CardTwelve(cardPosition);
 		break;
-		*/
+		
 	}
 
 	// 3- if pCard is correctly set in the switch case (i.e. if pCard is pointing to an object -- NOT NULL)

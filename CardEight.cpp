@@ -18,10 +18,11 @@ void CardEight::ReadCardParameters(Grid* pGrid)
 	pOut->PrintMessage("New CardEight: Enter its amount ...");
 	int Coins;
 	bool Test = false;
-	while (!Test)
+	
+	do
 	{
 		Coins = pIn->GetInteger(pOut);
-		if (Coins < 0 || Coins>100)
+		if (!(Coins > 0)) 
 		{
 			pOut->PrintMessage("Invalid number try again...");
 		}
@@ -30,7 +31,7 @@ void CardEight::ReadCardParameters(Grid* pGrid)
 			Test = true;
 			Amount = Coins;
 		}
-	}
+	} while (!Test);
 
 	pOut->ClearStatusBar();
 }
@@ -42,13 +43,13 @@ void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 
 	Card::Apply(pGrid, pPlayer);
 
-	pOut->PrintMessage("Now choose whether paying coins(type 1) or going to prison(type 2)...");
+	pOut->PrintMessage("Now choose whether paying " + to_string(Amount) + "coins (type 1) or going to prison(type 2)...");
 	int Choice;
 	bool Test = false;
 	Choice = pIn->GetInteger(pOut);
 	pOut->ClearStatusBar();
 
-	while (!Test)
+	do
 	{
 		switch (Choice)
 		{
@@ -73,11 +74,24 @@ void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 		}
 		break;
 		}
-	}
 
+	} while (!Test);
 
 }
 
 
+void CardEight::Save(ofstream& OutFile, int Type)
+{
+	if (Type == 2)
+	{
+		Card::Save(OutFile, Type);
+		OutFile << Amount << endl;
+	}
+}
 
 
+void CardEight::Load(ifstream& Infile)
+{
+	Card::Load(Infile);
+	Infile >> Amount;
+}
