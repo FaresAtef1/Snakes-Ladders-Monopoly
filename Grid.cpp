@@ -206,10 +206,27 @@ Player* Grid::GetPoorest()
 //========= Saving function =========
 void Grid::SaveAll(ofstream& OutFile, int Type)
 {
-	for (int i = NumVerticalCells-1; i >= 0; i--) {
-		for (int j = 0; j < NumHorizontalCells; j++) {
-			if (CellList[i][j]->GetGameObject()) {
+	for (int i = NumVerticalCells-1; i >= 0; i--) 
+	{
+		for (int j = 0; j < NumHorizontalCells; j++) 
+		{
+			if (CellList[i][j]->GetGameObject()) 
+			{
 				CellList[i][j]->GetGameObject()->Save(OutFile, Type);
+			}
+		}
+	}
+}
+
+void Grid::ClearGridArea()
+{
+	for (int i = NumVerticalCells - 1; i >= 0; i--)
+	{
+		for (int j = 0; j < NumHorizontalCells; j++)
+		{
+			if (CellList[i][j]->GetGameObject())
+			{
+				delete RemoveObjectFromCell(CellList[i][j]->GetCellPosition());
 			}
 		}
 	}
@@ -277,7 +294,8 @@ void Grid::PrintErrorMessage(string msg)
 }
 
 
-bool Grid::IsOverlapping(GameObject* newObj) const {
+bool Grid::IsOverlapping(GameObject* newObj) const 
+{
 
 	int H = newObj->GetPosition().HCell();
 	for (int V = 0; V < NumVerticalCells; V++) {

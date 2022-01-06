@@ -79,5 +79,18 @@ void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 }
 
 
+void CardEight::Save(ofstream& OutFile, int Type)
+{
+	if (Type == 2)
+	{
+		Card::Save(OutFile, Type);
+		OutFile << Amount << endl;
+	}
+}
 
 
+void CardEight::Load(ifstream& Infile)
+{
+	Card::Load(Infile);
+	Infile >> Amount;
+}

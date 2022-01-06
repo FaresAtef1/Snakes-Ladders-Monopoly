@@ -3,6 +3,7 @@ int  CardEleven::CardPrice = 0;
 int  CardEleven::Fees = 0;
 Player* CardEleven::Owner = nullptr;
 bool CardEleven::IsSaved = false;
+bool CardEleven::IsRead = false;
 
 CardEleven::CardEleven(const CellPosition& cellposition) :Card(cellposition)
 {
@@ -109,4 +110,25 @@ void CardEleven::Save(ofstream& OutFile, int Type)
 		}
 		OutFile << endl;
 	}
+}
+
+void CardEleven::Load(ifstream& Infile)
+{
+	Card::Load(Infile);
+	if (!IsRead)
+	{
+		Infile >> CardPrice >> Fees;
+		IsRead = true;
+	}
+}
+
+
+void CardEleven::SetIsSavedF()
+{
+	IsSaved = false;
+}
+
+void CardEleven::SetIsReadF()
+{
+	IsRead = false;
 }

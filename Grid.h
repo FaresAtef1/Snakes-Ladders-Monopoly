@@ -95,5 +95,7 @@ public:
 
 	void SaveAll(ofstream& OutFile, int Type);
 
+	void ClearGridArea();
+
 	~Grid(); // A destructor for any needed deallcations
 };
