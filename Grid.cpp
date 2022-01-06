@@ -151,6 +151,7 @@ void Grid::Restart()
 		PlayerList[i]->SetWallet(100);
 		UpdatePlayerCell(PlayerList[i], NewCell);
 		PlayerList[i]->SetTurnCount(0);
+		PlayerList[i]->SetTurnsDisabled(0);
 	}
 		UpdateInterface();
 }
