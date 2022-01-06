@@ -47,7 +47,7 @@ bool Snake::IsOverlapping(GameObject* newObj) const {
 	if (pSna) {
 		if (pSna->GetEndPosition().VCell() >= GetPosition().VCell() && pSna->GetPosition().VCell() <= GetPosition().VCell()) {
 			return true;
-		}
+		}	
 
 	}
 

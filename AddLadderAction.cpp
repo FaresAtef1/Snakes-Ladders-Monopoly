@@ -20,7 +20,6 @@ void AddLadderAction::ReadActionParameters()
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
 
-	// Read the startPos parameter
 	pOut->PrintMessage("New Ladder: Click on its Start Cell ...");
 	startPos = pIn->GetCellClicked();
 
@@ -33,15 +32,15 @@ void AddLadderAction::ReadActionParameters()
 	///TODO: Make the needed validations on the read parameters
 	bool Con1 = endPos.HCell() == startPos.HCell();
 	bool Con2 = endPos.VCell() < startPos.VCell();
-	if (!Con1 || !Con2) {
+	while(!Con1 || !Con2 || startPos.GetCellNum()==1 ) {
 		pOut->PrintMessage("Invalid Positioning, Try Again");
 		pIn->GetCellClicked();
 		pOut->PrintMessage("New Ladder: Click on its Start Cell ...");
 		startPos = pIn->GetCellClicked();
 		pOut->PrintMessage("New Ladder: Click on its End Cell ...");
 		endPos = pIn->GetCellClicked();
+		
 	}
-
 	// Clear messages
 	pOut->ClearStatusBar();
 }

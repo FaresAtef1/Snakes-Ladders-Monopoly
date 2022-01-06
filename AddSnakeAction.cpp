@@ -33,7 +33,7 @@ void AddSnakeAction::ReadActionParameters()
 	///TODO: Make the needed validations on the read parameters
 	bool Con1 = endPos.HCell() == startPos.HCell();
 	bool Con2 = endPos.VCell() > startPos.VCell();
-	if (!Con1 || !Con2) {
+	while (!Con1 || !Con2 || startPos.GetCellNum()==99 ) {
 		pOut->PrintMessage("Invalid Positioning, Try Again");
 		pIn->GetCellClicked();
 		pOut->PrintMessage("New Snake: Click on its Start Cell ...");

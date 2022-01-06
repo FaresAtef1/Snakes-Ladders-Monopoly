@@ -98,7 +98,7 @@ CellPosition CellPosition::GetCellPositionFromNum(int cellNum)
 		position.SetHCell(h);
 		position.SetVCell(v);
 	}
-	
+	  
 		
 		
 	// Note: use the passed cellNum to set the vCell and hCell of the "position" variable declared inside the function
@@ -111,7 +111,10 @@ void CellPosition::AddCellNum (int addedNum)
 	/// TODO: Implement this function as described in the .h fileint num = (hCell + 1) + (8 - vCell) * 11;
 	int num = (hCell + 1) + (NumVerticalCells - vCell-1) * NumHorizontalCells;
 	num = ((num + addedNum) > 0) ? (num + addedNum) : 1;
-	*this = GetCellPositionFromNum(num);
+		if (GetCellPositionFromNum(num).HCell() != -1)
+		{
+			*this = GetCellPositionFromNum(num);
+		}
 	// Note: this function updates the data members (vCell and hCell) of the calling object
 
 }
