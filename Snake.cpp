@@ -1,4 +1,5 @@
 #include "Snake.h"
+#include "Ladder.h"
 
 int Snake::SnakeCount = 0;
 
@@ -37,21 +38,28 @@ void Snake::Apply(Grid* pGrid, Player* pPlayer)
 }
 
 
-bool Snake::IsOverlapping(GameObject* newObj) const {
-	if (GetEndPosition().VCell() >= newObj->GetPosition().VCell() && GetPosition().VCell() <= newObj->GetPosition().VCell()) {
-		return true;
-	}
+bool Snake::IsOverlapping(GameObject* newObj) const 
+{
 
 	Snake* pSna = dynamic_cast <Snake*> (newObj);
 
-	if (pSna) {
-		if (pSna->GetEndPosition().VCell() >= GetPosition().VCell() && pSna->GetPosition().VCell() <= GetPosition().VCell()) {
+	if (pSna) 
+	{
+		if (GetEndPosition().VCell() >= newObj->GetPosition().VCell() && GetPosition().VCell() <= newObj->GetPosition().VCell()) 
+		{
 			return true;
 		}
-
+		if (pSna->GetEndPosition().VCell() >= GetPosition().VCell() && pSna->GetPosition().VCell() <= GetPosition().VCell()) 
+		{
+			return true;
+		}
 	}
-
-
+	Ladder* pLad = dynamic_cast<Ladder*>(newObj);
+	if (pLad)
+	{
+		if (GetEndPosition().GetCellNum() == pLad->GetPosition().GetCellNum())
+			return true;
+	}
 	return false;
 
 }

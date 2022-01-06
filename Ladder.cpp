@@ -1,4 +1,5 @@
 #include "Ladder.h"
+#include "Snake.h"
 
 
 int Ladder::LadderCount = 0;
@@ -42,23 +43,26 @@ CellPosition Ladder::GetEndPosition() const
 }
 
 
-bool Ladder::IsOverlapping(GameObject* newObj) const {
-
-
-
-	if (newObj->GetPosition().VCell() == GetEndPosition().VCell())
-		return true;
-
+bool Ladder::IsOverlapping(GameObject* newObj) const 
+{
 	Ladder* pLad = dynamic_cast<Ladder*>(newObj);
-	if (pLad) {
-		if (pLad->GetEndPosition().VCell() <= GetPosition().VCell() && pLad->GetPosition().VCell() >= GetPosition().VCell()) {
+	if (pLad) 
+	{
+		if (pLad->GetEndPosition().VCell() <= GetPosition().VCell() && pLad->GetPosition().VCell() >= GetPosition().VCell()) 
+		{
 			return true;
 		}
-		if (GetEndPosition().VCell() <= newObj->GetPosition().VCell() && GetPosition().VCell() >= newObj->GetPosition().VCell()) {
+		if (GetEndPosition().VCell() <= newObj->GetPosition().VCell() && GetPosition().VCell() >= newObj->GetPosition().VCell()) 
+		{
 			return true;
 		}
 	}
-
+	Snake* pSna = dynamic_cast<Snake*>(newObj);
+	if (pSna)
+	{
+		if (GetEndPosition().GetCellNum() == pSna->GetPosition().GetCellNum())
+			return true;
+	}
 	return false;
 }
 

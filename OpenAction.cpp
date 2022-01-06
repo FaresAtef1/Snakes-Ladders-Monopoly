@@ -1,4 +1,5 @@
 #include "OpenAction.h"
+#include "NewGameAction.h"
 
 #include "Grid.h"
 #include "Ladder.h"
@@ -16,15 +17,18 @@
 #include "CardEleven.h"
 #include "CardTwelve.h"
 
-OpenAction::OpenAction(ApplicationManager* pApp) : Action(pApp) {
+OpenAction::OpenAction(ApplicationManager* pApp) : Action(pApp) 
+{
 
 }
 
-OpenAction::~OpenAction() {
+OpenAction::~OpenAction() 
+{
 
 }
 
-void OpenAction::ReadActionParameters() {
+void OpenAction::ReadActionParameters() 
+{
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
@@ -33,16 +37,15 @@ void OpenAction::ReadActionParameters() {
 	FileName = pIn->GetSrting(pOut);
 	FileName = FileName + ".txt";
 	pOut->ClearStatusBar();
-
-
 }
 
-void OpenAction::Execute() {
+void OpenAction::Execute() 
+{
 	ReadActionParameters();
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
-
+	pManager->ExecuteAction(NEW_GAME);
 	pGrid->ClearGridArea();
 	/*CardNine::SetIsSavedF();
 	CardTen::SetIsSavedF();
@@ -51,7 +54,8 @@ void OpenAction::Execute() {
 	CardTen::SetIsReadF();
 	CardEleven::SetIsReadF();
 	ifstream GridOpen(FileName);
-	if (GridOpen.is_open()) {
+	if (GridOpen.is_open()) 
+	{
 		int numoflad;
 		GridOpen >> numoflad;
 		for (int i = 0; i < numoflad; i++)
@@ -75,7 +79,8 @@ void OpenAction::Execute() {
 			int CardNum;
 			Card* pCard;
 			GridOpen >> CardNum;
-			switch (CardNum) {
+			switch (CardNum) 
+			{
 			case 1:
 				pCard = new CardOne(0);
 				pCard->Load(GridOpen);
@@ -148,17 +153,11 @@ void OpenAction::Execute() {
 				pGrid->AddObjectToCell(pCard);
 				break;
 			}
-
-
 		}
-
 		GridOpen.close();
-
 	}
 
 	else
-	{
 		pGrid->PrintErrorMessage("Error: Could not Find the file!");
-	}
 }
 

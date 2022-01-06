@@ -1,5 +1,4 @@
 #include "AddLadderAction.h"
-
 #include "Input.h"
 #include "Output.h"
 #include "Ladder.h"
@@ -19,8 +18,6 @@ void AddLadderAction::ReadActionParameters()
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
-
-	// Read the startPos parameter
 	pOut->PrintMessage("New Ladder: Click on its Start Cell ...");
 	startPos = pIn->GetCellClicked();
 
@@ -28,12 +25,10 @@ void AddLadderAction::ReadActionParameters()
 	pOut->PrintMessage("New Ladder: Click on its End Cell ...");
 	endPos = pIn->GetCellClicked();
 
-
-
 	///TODO: Make the needed validations on the read parameters
-	bool Con1 = endPos.HCell() == startPos.HCell();
-	bool Con2 = endPos.VCell() < startPos.VCell();
-	if (!Con1 || !Con2) {
+
+	while (!(endPos.HCell() == startPos.HCell()) || !(endPos.VCell() < startPos.VCell()) || startPos.GetCellNum() == 1)
+	{
 		pOut->PrintMessage("Invalid Positioning, Try Again");
 		pIn->GetCellClicked();
 		pOut->PrintMessage("New Ladder: Click on its Start Cell ...");
@@ -58,16 +53,20 @@ void AddLadderAction::Execute()
 	Ladder* pLadder = new Ladder(startPos, endPos);
 
 	Grid* pGrid = pManager->GetGrid(); // We get a pointer to the Grid from the ApplicationManager
-
-	// Add the card object to the GameObject of its Cell:
-	bool added = pGrid->AddObjectToCell(pLadder);
-
-	// if the GameObject cannot be added
-	if (!added)
+	if (!pGrid->IsOverlapping(pLadder))
 	{
-		// Print an appropriate message
-		pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
+		// Add the card object to the GameObject of its Cell:
+		bool added = pGrid->AddObjectToCell(pLadder);
+
+		// if the GameObject cannot be added
+		if (!added)
+		{
+			// Print an appropriate message
+			pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
+		}
+		// Here, the ladder is created and added to the GameObject of its Cell, so we finished executing the AddLadderAction
 	}
-	// Here, the ladder is created and added to the GameObject of its Cell, so we finished executing the AddLadderAction
+	else
+		pGrid->PrintErrorMessage("Error: Overlapping objects ! Click to continue ...");
 
 }

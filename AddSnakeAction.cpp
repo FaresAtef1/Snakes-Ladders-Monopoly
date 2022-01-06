@@ -28,12 +28,9 @@ void AddSnakeAction::ReadActionParameters()
 	pOut->PrintMessage("New Snake: Click on its End Cell ...");
 	endPos = pIn->GetCellClicked();
 
-
-
 	///TODO: Make the needed validations on the read parameters
-	bool Con1 = endPos.HCell() == startPos.HCell();
-	bool Con2 = endPos.VCell() > startPos.VCell();
-	if (!Con1 || !Con2) {
+	while (!(endPos.HCell() == startPos.HCell()) || !(endPos.VCell() > startPos.VCell()) || startPos.GetCellNum() == 99)
+	{
 		pOut->PrintMessage("Invalid Positioning, Try Again");
 		pIn->GetCellClicked();
 		pOut->PrintMessage("New Snake: Click on its Start Cell ...");
@@ -58,16 +55,19 @@ void AddSnakeAction::Execute()
 	Snake* pSnake = new Snake(startPos, endPos);
 
 	Grid* pGrid = pManager->GetGrid(); // We get a pointer to the Grid from the ApplicationManager
-
-	// Add the card object to the GameObject of its Cell:
-	bool added = pGrid->AddObjectToCell(pSnake);
-
-	// if the GameObject cannot be added
-	if (!added)
+	if (!pGrid->IsOverlapping(pSnake))
 	{
-		// Print an appropriate message
-		pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
-	}
-	// Here, the ladder is created and added to the GameObject of its Cell, so we finished executing the AddLadderAction
+		// Add the card object to the GameObject of its Cell:
+		bool added = pGrid->AddObjectToCell(pSnake);
 
+		// if the GameObject cannot be added
+		if (!added)
+		{
+			// Print an appropriate message
+			pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
+		}
+		// Here, the ladder is created and added to the GameObject of its Cell, so we finished executing the AddLadderAction
+	}
+	else
+		pGrid->PrintErrorMessage("Error: Overlapping objects ! Click to continue ...");
 }
