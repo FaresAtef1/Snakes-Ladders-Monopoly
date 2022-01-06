@@ -6,6 +6,7 @@ class CardEleven : public Card
 	static int Fees;
 	static Player* Owner;
 	static bool IsSaved ;
+	static bool IsRead;
 public:
 	CardEleven(const CellPosition& cellposition);
 	void ReadCardParameters(Grid* pGrid);
@@ -14,5 +15,8 @@ public:
 	void SetOwner(Player* pNew);
 	int GetCardPrice();
 	void Save(ofstream& OutFile, int Type);
+	virtual void Load(ifstream& Infile);
+	void static SetIsSavedF();//    ??
+	void static SetIsReadF();
 };
 

@@ -1,13 +1,18 @@
 #include "SaveGridAction.h"
 
 #include"Grid.h"
+#include "CardNine.h"
+#include "CardEleven.h"
+#include "CardTen.h"
 
 
-SaveGridAction::SaveGridAction(ApplicationManager* pApp) : Action(pApp) {
+SaveGridAction::SaveGridAction(ApplicationManager* pApp) : Action(pApp) 
+{
 
 }
 
-SaveGridAction:: ~SaveGridAction() {
+SaveGridAction:: ~SaveGridAction() 
+{
 
 }
 
@@ -32,6 +37,9 @@ void SaveGridAction::Execute() {
 	Grid* pGrid = pManager->GetGrid();
 
 	ofstream GridSave(FileName);
+	CardNine::SetIsSavedF();
+	CardTen::SetIsSavedF();
+	CardEleven::SetIsSavedF();
 
 	GridSave << pGrid->GetLadderCount() << endl;
 	pGrid->SaveAll(GridSave, 0);

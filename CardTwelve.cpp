@@ -111,3 +111,8 @@ void CardTwelve::Save(ofstream& OutFile, int Type)
 		OutFile << endl;
 	}
 }
+
+void CardTwelve::Load(ifstream& Infile)
+{
+	Card::Load(Infile);
+}

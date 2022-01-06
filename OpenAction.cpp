@@ -10,6 +10,11 @@
 #include "CardFive.h"
 #include "CardSix.h"
 #include "CardSeven.h"
+#include "CardEight.h"
+#include "CardNine.h"
+#include "CardTen.h"
+#include "CardEleven.h"
+#include "CardTwelve.h"
 
 OpenAction::OpenAction(ApplicationManager* pApp) : Action(pApp) {
 
@@ -38,6 +43,13 @@ void OpenAction::Execute() {
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
 
+	pGrid->ClearGridArea();
+	/*CardNine::SetIsSavedF();
+	CardTen::SetIsSavedF();
+	CardEleven::SetIsSavedF();*/
+	CardNine::SetIsReadF();
+	CardTen::SetIsReadF();
+	CardEleven::SetIsReadF();
 	ifstream GridOpen(FileName);
 	if (GridOpen.is_open()) {
 		int numoflad;
@@ -82,6 +94,12 @@ void OpenAction::Execute() {
 				pGrid->AddObjectToCell(pCard);
 				break;
 
+			case 4:
+				pCard = new CardFour(0);
+				pCard->Load(GridOpen);
+				pGrid->AddObjectToCell(pCard);
+				break;
+
 			case 5:
 				pCard = new CardFive(0);
 				pCard->Load(GridOpen);
@@ -96,6 +114,36 @@ void OpenAction::Execute() {
 
 			case 7:
 				pCard = new CardSeven(0);
+				pCard->Load(GridOpen);
+				pGrid->AddObjectToCell(pCard);
+				break;
+
+			case 8:
+				pCard = new CardEight(0);
+				pCard->Load(GridOpen);
+				pGrid->AddObjectToCell(pCard);
+				break;
+
+			case 9:
+				pCard = new CardNine(0);
+				pCard->Load(GridOpen);
+				pGrid->AddObjectToCell(pCard);
+				break;
+
+			case 10:
+				pCard = new CardTen(0);
+				pCard->Load(GridOpen);
+				pGrid->AddObjectToCell(pCard);
+				break;
+
+			case 11:
+				pCard = new CardEleven(0);
+				pCard->Load(GridOpen);
+				pGrid->AddObjectToCell(pCard);
+				break;
+
+			case 12:
+				pCard = new CardTwelve(0);
 				pCard->Load(GridOpen);
 				pGrid->AddObjectToCell(pCard);
 				break;
