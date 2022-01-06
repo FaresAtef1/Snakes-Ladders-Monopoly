@@ -21,15 +21,24 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 	int Preventer = 0;    // this variable prevents printing the last message if the Current Player does not have any cards
 	int MaxPrice;
 	Output* pOut = pGrid->GetOutput();
-	Player* NewOwner = pGrid->GetPoorest(); // fy mo4kla law el current hwa el poorest b2a
+	Player* NewOwner = pGrid->GetPoorest(); 
 	int IndexOfPoorestPlayer = NewOwner->getPlayerNum();
-	//bool Test = pPlayer->IsEqualWallets();
 	bool Test=true;
-	if (pPlayer->IsEqualWallets() && (pPlayer->GetEqualWallets() != NewOwner->GetWallet()))
+
+	if (pPlayer->GetWallet() == NewOwner->GetWallet())
+	{
+		pOut->PrintMessage("You are the poorest player");
+		return;
+	}
+
+	int CommonWallet = pPlayer->GetEqualWallets();  // this variable is used because function IsEqualWallets makes EqualWallet =-1 so we will not be able to get the previous one
+	bool IsEqual = pPlayer->IsEqualWallets();  // for the same reason mentioned above 
+	if ((IsEqual && (CommonWallet != NewOwner->GetWallet()))||(!IsEqual))
 		Test = false;
 	
 	if (Test)
 		NewOwner = NULL;
+
 
 		if (C9->GetOwner() == pPlayer)
 		{
@@ -96,9 +105,9 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 
 void CardTwelve::Save(ofstream& OutFile, int Type)
 {
-	if (Type == 2) {
+	if (Type == 2) 
+	{
 		Card::Save(OutFile, Type);
 		OutFile << endl;
-
 	}
 }

@@ -14,6 +14,7 @@
 #include "SaveGridAction.h"
 #include "OpenAction.h"
 #include "DeleteGameObject.h"
+#include "NewGameAction.h"
 
 
 ///TODO: Add #include for all action types
@@ -94,6 +95,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 	case INPUT_DICE_VALUE:
 		pAct = new InputDiceValueAction(this);
+		break;
+
+	case NEW_GAME:
+		pAct = new NewGameAction(this);
 		break;
 
 	case TO_DESIGN_MODE:

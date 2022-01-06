@@ -34,6 +34,7 @@ public:
 
 
 	int GetTurnCount() const;		// A getter for the turnCount
+	void SetTurnCount(int t);
 
 	void SetTurnsDisabled(int t);
 	int getTurnsDisabled() const;

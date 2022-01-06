@@ -40,29 +40,43 @@ int Player::GetWallet() const
 	return wallet;
 }
 
-
-
 int Player::GetTurnCount() const
 {
 	return turnCount;
 }
-void Player::SetTurnsDisabled(int t) {
+
+void Player::SetTurnCount(int t)
+{
+	if (t<5 && t>-1)
+		turnCount = t;
+	else
+		turnCount = 0;
+}
+
+void Player::SetTurnsDisabled(int t) 
+{
 	TurnsDisabled = (t >= 0) ? t : 0;
 }
-int Player::getTurnsDisabled() const {
+
+int Player::getTurnsDisabled() const 
+{
 	return TurnsDisabled;
 }
+
 int Player::GetjustRolledDiceNum() const
 {
 	return justRolledDiceNum;
 }
+
 int Player::GetEqualWallets()const
 {
 	return EqualWallets;
 }
+
 int Player::getPlayerNum() const {
 	return playerNum;
 }
+
 Player* Player::GetPoor(Player* P2)
 {
 	if (GetWallet() < P2->GetWallet())
@@ -75,6 +89,7 @@ Player* Player::GetPoor(Player* P2)
 		return this;
 	}
 }
+
 bool Player::IsEqualWallets()
 {
 	if (EqualWallets == -1)

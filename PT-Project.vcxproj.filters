@@ -242,6 +242,7 @@
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="OpenAction.cpp" />
+    <ClCompile Include="NewGameAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -411,5 +412,6 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="OpenAction.h" />
+    <ClInclude Include="NewGameAction.h" />
   </ItemGroup>
 </Project>

@@ -141,6 +141,20 @@ void Grid::AdvanceCurrentPlayer()
 {
 	currPlayerNumber = (currPlayerNumber + 1) % MaxPlayerCount; // this generates value from 0 to MaxPlayerCount - 1
 }
+
+void Grid::Restart()
+{
+	CellPosition NewCell(1);
+	currPlayerNumber = 0;
+	for (int i = 0; i < MaxPlayerCount; i++)
+	{
+		PlayerList[i]->SetWallet(100);
+		UpdatePlayerCell(PlayerList[i], NewCell);
+		PlayerList[i]->SetTurnCount(0);
+	}
+		UpdateInterface();
+}
+
 void Grid::RestartPlayerWithNum(int numofplayer) {
 	UpdatePlayerCell(PlayerList[numofplayer], CellPosition::GetCellPositionFromNum(1));
 }
