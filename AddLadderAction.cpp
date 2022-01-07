@@ -35,8 +35,8 @@ void AddLadderAction::ReadActionParameters()
 		startPos = pIn->GetCellClicked();
 		pOut->PrintMessage("New Ladder: Click on its End Cell ...");
 		endPos = pIn->GetCellClicked();
+		
 	}
-
 	// Clear messages
 	pOut->ClearStatusBar();
 }

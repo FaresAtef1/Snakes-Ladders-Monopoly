@@ -29,18 +29,16 @@ CellPosition::CellPosition (int cellNum)
 bool CellPosition::SetVCell(int v) 
 {
 	///TODO: Implement this function as described in the .h file (don't forget the validation)
-	 if ((v >= 0) && (v <= 8)) 
-	 {
+	 if ((v >= 0) && (v <= 8)) {
 		vCell = v;
 		return true;
-	 }
+	}
 	return false; // this line sould be changed with your implementation
 }
 
 bool CellPosition::SetHCell(int h) 
 {
-	if (h >= 0 && h <= 10) 
-	{
+	if (h >= 0 && h <= 10) {
 		hCell = h;
 		return true;
 	}
@@ -93,15 +91,14 @@ CellPosition CellPosition::GetCellPositionFromNum(int cellNum)
 	CellPosition position;
 	/// TODO: Implement this function as described in the .h file
 	int v, h;
-	if (cellNum > 0 && cellNum < 100) 
-	{
+	if (cellNum > 0 && cellNum < 100) {
 		v = NumVerticalCells - cellNum / (NumHorizontalCells)-1;
 		v = (cellNum % 11 == 0) ? v + 1 : v;
 		h = cellNum - (NumHorizontalCells) * (NumVerticalCells - v - 1) - 1;
 		position.SetHCell(h);
 		position.SetVCell(v);
 	}
-
+	  
 		
 		
 	// Note: use the passed cellNum to set the vCell and hCell of the "position" variable declared inside the function
@@ -114,7 +111,10 @@ void CellPosition::AddCellNum (int addedNum)
 	/// TODO: Implement this function as described in the .h fileint num = (hCell + 1) + (8 - vCell) * 11;
 	int num = (hCell + 1) + (NumVerticalCells - vCell-1) * NumHorizontalCells;
 	num = ((num + addedNum) > 0) ? (num + addedNum) : 1;
-	*this = GetCellPositionFromNum(num);
+		if (GetCellPositionFromNum(num).HCell() != -1)
+		{
+			*this = GetCellPositionFromNum(num);
+		}
 	// Note: this function updates the data members (vCell and hCell) of the calling object
 
 }
