@@ -1,12 +1,14 @@
 #include "CardTen.h"
 int  CardTen::CardPrice = 0;
 int  CardTen::Fees = 0;
+int CardTen::NumberOfCards = 0;
 Player* CardTen::Owner = nullptr;
 bool CardTen::IsSaved = false;
 bool CardTen::IsRead = false;
 
 CardTen::CardTen(const CellPosition& cellposition) :Card(cellposition)
 {
+	NumberOfCards++;
 	cardNumber = 10;
 }
 
@@ -78,8 +80,11 @@ void CardTen::Apply(Grid* pGrid, Player* pPlayer)
 		if (Owner != pPlayer)
 		{
 			pOut->PrintMessage("Stepped on a card owned by p(" + to_string(Owner->getPlayerNum()) + ") pay : " + to_string(Fees));
+			if (Fees < pPlayer->GetWallet())
+				Owner->SetWallet(Owner->GetWallet() + Fees);
+			else
+				Owner->SetWallet(Owner->GetWallet() + pPlayer->GetWallet());
 			pPlayer->SetWallet(pPlayer->GetWallet() - Fees);
-			Owner->SetWallet(Owner->GetWallet() + Fees);
 		}
 	}
 
@@ -132,4 +137,13 @@ void CardTen::SetIsSavedF()
 void CardTen::SetIsReadF()
 {
 	IsRead = false;
+}
+CardTen::~CardTen() {
+	NumberOfCards--;
+	if (NumberOfCards == 0)
+	{
+		Fees = 0;
+		CardPrice = 0;
+		Owner = nullptr;
+	}
 }

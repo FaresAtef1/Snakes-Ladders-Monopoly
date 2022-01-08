@@ -4,6 +4,7 @@ class CardEleven : public Card
 {
 	static int CardPrice;
 	static int Fees;
+	static int NumberOfCards;
 	static Player* Owner;
 	static bool IsSaved ;
 	static bool IsRead;
@@ -18,5 +19,6 @@ public:
 	virtual void Load(ifstream& Infile);
 	void static SetIsSavedF();//    ??
 	void static SetIsReadF();
+	~CardEleven();
 };
 

@@ -7,6 +7,7 @@ class CardNine : public Card
 	static Player* Owner;
 	static bool IsSaved;
 	static bool IsRead;
+	static int NumberOfCards;
 public:
 	CardNine(const CellPosition & cellposition);
 	void ReadCardParameters(Grid* pGrid);
@@ -18,5 +19,6 @@ public:
 	virtual void Load(ifstream& Infile);
 	void static SetIsSavedF();//??
 	void static SetIsReadF();
+	~CardNine();
 };
 
