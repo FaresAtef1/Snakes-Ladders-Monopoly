@@ -30,18 +30,19 @@ void AddCardAction::ReadActionParameters()
 	pOut->PrintMessage("New Card: Click on its Cell ...");
 	cardPosition = pIn->GetCellClicked();
 	// 4- Make the needed validations on the read parameters
-
+	while (cardPosition.GetCellNum() == 1)
+	{
+		pGrid->PrintErrorMessage("Invalid position, click to continue...");
+		pOut->PrintMessage("New Card: Click on its Cell ...");
+		cardPosition = pIn->GetCellClicked();
+	}
 	// 5- Clear status bar
 	pOut->ClearStatusBar();
 }
 
 void AddCardAction::Execute() 
 {
-
-	
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
-
-
 	// == Here are some guideline steps (numbered below) to implement this function ==
 
 	// 1- The first line of any Action Execution is to read its parameter first

@@ -311,10 +311,11 @@ void Grid::PrintErrorMessage(string msg)
 
 bool Grid::IsOverlapping(GameObject* newObj) const 
 {
-
 	int H = newObj->GetPosition().HCell();
-	for (int V = 0; V < NumVerticalCells; V++) {
-		if (CellList[V][H]->GetGameObject()) {
+	for (int V = 0; V < NumVerticalCells; V++) 
+	{
+		if (CellList[V][H]->GetGameObject()) 
+		{
 			if (CellList[V][H]->GetGameObject()->IsOverlapping(newObj))
 				return true;
 		}

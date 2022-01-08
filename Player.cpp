@@ -73,7 +73,8 @@ int Player::GetEqualWallets()const
 	return EqualWallets;
 }
 
-int Player::getPlayerNum() const {
+int Player::getPlayerNum() const 
+{
 	return playerNum;
 }
 
