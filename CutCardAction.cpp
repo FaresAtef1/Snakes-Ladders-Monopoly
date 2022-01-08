@@ -17,11 +17,18 @@ void CutCardAction::Execute()
 	if (cardPos.IsValidCell())
 	{
 		Grid* pGrid = pManager->GetGrid();
+		if (pGrid->GetClipboard())
+			if (pGrid->GetGameObjectOfCell(pGrid->GetClipboard()->GetPosition()) != pGrid->GetClipboard())
+			{
+				pGrid->AddObjectToCell(pGrid->GetClipboard());
+				pGrid->SetClipboard(nullptr);
+			}
 		GameObject* pObj = pGrid->GetGameObjectOfCell(cardPos);
 		if (dynamic_cast<Card*>(pObj))
 		{
 			pObj = pGrid->RemoveObjectFromCell(cardPos);
 			pGrid->SetClipboard((Card*)pObj);
+			Card::CardCount--;
 		}
 	}
 }

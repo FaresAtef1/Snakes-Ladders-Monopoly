@@ -21,6 +21,7 @@ void NewGameAction::Execute()
 	CardEleven* C11 = NULL;
 
 	pGrid->SetEndGame(false);
+	pGrid->SetClipboard(NULL);
 	C9->SetOwner(NULL);
 	C10->SetOwner(NULL);
 	C11->SetOwner(NULL);

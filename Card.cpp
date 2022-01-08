@@ -8,8 +8,10 @@ Card::Card(const CellPosition& pos) : GameObject(pos) // sets the cell position 
 }
 
 void Card::SetCardNumber(int cnum)
-{
-	cardNumber = cnum;// needs validation
+{ 
+	if (cnum >= 1 && cnum <= 12)
+		cardNumber = cnum;      // needs validation
+	else cardNumber = 2;
 }
 
 int Card::GetCardNumber()

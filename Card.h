@@ -9,7 +9,7 @@
 class Card : public GameObject
 {
 protected:
-	int cardNumber; // an integer representing the card number
+	int cardNumber;  // an integer representing the card number
 
 public:
 	static int CardCount;
