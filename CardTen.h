@@ -20,6 +20,5 @@ public:
 	void static SetIsSavedF();//??
 	void static SetIsReadF();
 	~CardTen();
-
 };
 
