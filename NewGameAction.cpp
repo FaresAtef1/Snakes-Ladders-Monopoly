@@ -20,12 +20,14 @@ void NewGameAction::Execute()
 	CardTen* C10 = NULL;
 	CardEleven* C11 = NULL;
 
+	pGrid->SetEndGame(false);
 	C9->SetOwner(NULL);
 	C10->SetOwner(NULL);
 	C11->SetOwner(NULL);
 
 	pGrid->Restart();
-	pOut->ClearStatusBar();
+	pGrid->PrintErrorMessage("New game! click to start...");
+
 }
 NewGameAction::~NewGameAction()
 {

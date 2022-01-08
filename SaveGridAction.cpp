@@ -16,8 +16,8 @@ SaveGridAction:: ~SaveGridAction()
 
 }
 
-
-void SaveGridAction::ReadActionParameters() {
+void SaveGridAction::ReadActionParameters() 
+{
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
@@ -26,12 +26,10 @@ void SaveGridAction::ReadActionParameters() {
 	FileName = pIn->GetSrting(pOut);
 	FileName = FileName + ".txt";
 	pOut->ClearStatusBar();
-
-
 }
 
-void SaveGridAction::Execute() {
-
+void SaveGridAction::Execute() 
+{
 	ReadActionParameters();
 
 	Grid* pGrid = pManager->GetGrid();
@@ -48,6 +46,5 @@ void SaveGridAction::Execute() {
 	GridSave << pGrid->GetCardCount() << endl;
 	pGrid->SaveAll(GridSave, 2);
 	GridSave.close();
-
 }
 

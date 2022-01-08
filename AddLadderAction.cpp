@@ -41,7 +41,6 @@ void AddLadderAction::ReadActionParameters()
 	pOut->ClearStatusBar();
 }
 
-
 // Execute the action
 void AddLadderAction::Execute()
 {

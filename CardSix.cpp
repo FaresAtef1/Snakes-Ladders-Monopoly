@@ -33,10 +33,10 @@ void CardSix::ReadCardParameters(Grid* pGrid)
 
 	pOut->PrintMessage("New CardSix: Click on the cell to move to  ...");
 	CellToMoveTo = pIn->GetCellClicked();
-	while (CellToMoveTo.GetCellNum() == this->position.GetCellNum()) {
+	while (CellToMoveTo.GetCellNum() == this->position.GetCellNum()||!CellToMoveTo.IsValidCell()) 
+	{
 		pOut->PrintMessage("You cannot choose this cell, Try Again");
 		CellToMoveTo = pIn->GetCellClicked();
-
 	}
 
 	// 3- Clear the status bar
@@ -52,7 +52,7 @@ void CardSix::Apply(Grid* pGrid, Player* pPlayer)
 	Card::Apply(pGrid, pPlayer);
 
 	pOut->ClearStatusBar();
-	pGrid->PrintErrorMessage("Move to cell number : " + to_string(CellToMoveTo.GetCellNum()));
+	pGrid->PrintErrorMessage("Move to cell number : " + to_string(CellToMoveTo.GetCellNum())+" click to continue");
 	// Move the player
 	pGrid->UpdatePlayerCell(pPlayer, CellToMoveTo);
 	
@@ -75,7 +75,8 @@ void  CardSix::Save(ofstream& OutFile, int Type)
 }
 
 
-void CardSix::Load(ifstream& Infile) {
+void CardSix::Load(ifstream& Infile) 
+{
 	Card::Load(Infile);
 	int CellNum;
 	Infile >> CellNum;

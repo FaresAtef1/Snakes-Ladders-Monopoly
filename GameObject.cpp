@@ -18,12 +18,12 @@ bool GameObject::IsOverlapping(GameObject* newObj) const
 
 void GameObject::Save(ofstream& OutFile, int Type)
 {
-
-
-	if (this->position.GetCellNum() < 10) {
+	if (this->position.GetCellNum() < 10) 
+	{
 		OutFile << this->position.GetCellNum() << "  ";
 	}
-	else {
+	else 
+	{
 		OutFile << this->position.GetCellNum() << " ";
 	}
 }

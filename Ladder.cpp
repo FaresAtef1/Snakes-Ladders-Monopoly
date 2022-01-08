@@ -57,10 +57,13 @@ bool Ladder::IsOverlapping(GameObject* newObj) const
 			return true;
 		}
 	}
+
 	Snake* pSna = dynamic_cast<Snake*>(newObj);
 	if (pSna)
 	{
 		if (GetEndPosition().GetCellNum() == pSna->GetPosition().GetCellNum())
+			return true;
+		if (GetPosition().GetCellNum() == pSna->GetEndPosition().GetCellNum())
 			return true;
 	}
 	return false;

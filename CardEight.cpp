@@ -40,8 +40,14 @@ void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
-
 	Card::Apply(pGrid, pPlayer);
+
+	if (pPlayer->GetWallet() < Amount)
+	{
+		pOut->PrintMessage("Not enough coins! Go to prison");
+		pPlayer->SetTurnsDisabled(3);
+		return;
+	}
 
 	pOut->PrintMessage("Now choose whether paying " + to_string(Amount) + "coins (type 1) or going to prison(type 2)...");
 	int Choice;

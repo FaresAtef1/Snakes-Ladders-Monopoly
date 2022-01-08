@@ -132,10 +132,8 @@ void Player::Move(Grid* pGrid, int diceNumber)
 	Output* pOut = pGrid->GetOutput();
 	// == Here are some guideline steps (numbered below) to implement this function ==
 
-
 	// 1- Increment the turnCount because calling Move() means that the player has rolled the dice once
 	this->turnCount++;
-
 
 	// 2- Check the turnCount to know if the wallet recharge turn comes (recharge wallet instead of move)
 	//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
@@ -146,7 +144,6 @@ void Player::Move(Grid* pGrid, int diceNumber)
 		pOut->PrintMessage("Fourth time to roll ! Wallet increased by  " + to_string(10 * diceNumber));
 		return;
 	}
-
 
 	// 3- Set the justRolledDiceNum with the passed diceNumber
 	if (getTurnsDisabled() == 0)			
@@ -164,12 +161,18 @@ void Player::Move(Grid* pGrid, int diceNumber)
 
 		pGrid->UpdatePlayerCell(this, pos);
 	     
-
 		// 6- Apply() the game object of the reached cell (if any)
+
+		if (pCell->GetCellPosition().GetCellNum()+justRolledDiceNum== 100)
+		{
+			pGrid->SetEndGame(true);
+			pOut->PrintMessage("Game Finished, P("+to_string(playerNum)+ ") won!");
+			pGrid->UpdatePlayerCell(this, 99);
+		}
 
 		CellPosition BeforeObj = pCell->GetCellPosition();
 		GameObject* pObj = this->pCell->GetGameObject();
-		if (pObj)
+		if (pObj&&!pGrid->GetEndGame())
 		{
 			pObj->Apply(pGrid, this);
 			while (BeforeObj.GetCellNum() != pCell->GetCellPosition().GetCellNum() && this->pCell->GetGameObject() != NULL)
@@ -182,11 +185,6 @@ void Player::Move(Grid* pGrid, int diceNumber)
 
 		// 7- Check if the player reached the end cell of the whole game, and if yes, Set end game with true: pGrid->SetEndGame(true)
 
-		if (pCell->GetCellPosition().GetCellNum()+justRolledDiceNum== 100)
-		{
-			pGrid->SetEndGame(true);
-			pOut->PrintMessage("Game Finished");
-		}
 	}
 	else
 	{
@@ -194,7 +192,6 @@ void Player::Move(Grid* pGrid, int diceNumber)
 		SetTurnsDisabled(TurnsDisabled - 1);
 
 	}
-
 }
 
 void Player::AppendPlayerInfo(string& playersInfo) const

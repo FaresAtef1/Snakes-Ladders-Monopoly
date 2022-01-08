@@ -54,14 +54,16 @@ bool Snake::IsOverlapping(GameObject* newObj) const
 			return true;
 		}
 	}
+
 	Ladder* pLad = dynamic_cast<Ladder*>(newObj);
 	if (pLad)
 	{
 		if (GetEndPosition().GetCellNum() == pLad->GetPosition().GetCellNum())
 			return true;
+		if (GetPosition().GetCellNum() == pLad->GetEndPosition().GetCellNum())
+			return true;
 	}
 	return false;
-
 }
 
 
