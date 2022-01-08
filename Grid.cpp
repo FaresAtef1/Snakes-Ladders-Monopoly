@@ -196,16 +196,17 @@ int Grid::GetCellNumOfPlayer(int numofplayer)
 
 int Grid::GetLadderCount()
 {
-	return Ladder::LadderCount;
+	return Ladder::GetLadderCount();
 }
 
 int Grid::GetSnakeCount()
 {
-	return Snake::SnakeCount;
+	return Snake::GetSnakeCount();
 }
 
-int Grid::GetCardCount() {
-	return Card::CardCount;
+int Grid::GetCardCount() 
+{
+	return 	Card::GetCardCount() ;
 }
 
 Player* Grid::GetPoorest()

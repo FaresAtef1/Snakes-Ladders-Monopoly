@@ -138,7 +138,8 @@ void CardTen::SetIsReadF()
 {
 	IsRead = false;
 }
-CardTen::~CardTen() {
+CardTen::~CardTen() 
+{
 	NumberOfCards--;
 	if (NumberOfCards == 0)
 	{

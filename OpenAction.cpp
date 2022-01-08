@@ -47,9 +47,6 @@ void OpenAction::Execute()
 	Input* pIn = pGrid->GetInput();
 	pManager->ExecuteAction(NEW_GAME);
 	pGrid->ClearGridArea();
-	/*CardNine::SetIsSavedF();
-	CardTen::SetIsSavedF();
-	CardEleven::SetIsSavedF();*/
 	CardNine::SetIsReadF();
 	CardTen::SetIsReadF();
 	CardEleven::SetIsReadF();

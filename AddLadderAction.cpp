@@ -62,10 +62,14 @@ void AddLadderAction::Execute()
 		{
 			// Print an appropriate message
 			pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
+			delete pLadder;
 		}
 		// Here, the ladder is created and added to the GameObject of its Cell, so we finished executing the AddLadderAction
 	}
 	else
+	{
 		pGrid->PrintErrorMessage("Error: Overlapping objects ! Click to continue ...");
+		delete pLadder;
+	}
 
 }

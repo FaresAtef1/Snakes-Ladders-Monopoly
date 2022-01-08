@@ -17,7 +17,7 @@ public:
 	int GetCardPrice();
 	virtual void Save(ofstream& OutFile, int Type);
 	virtual void Load(ifstream& Infile);
-	void static SetIsSavedF();//??
+	void static SetIsSavedF();
 	void static SetIsReadF();
 	~CardTen();
 };

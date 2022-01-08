@@ -28,7 +28,8 @@ void CutCardAction::Execute()
 		{
 			pObj = pGrid->RemoveObjectFromCell(cardPos);
 			pGrid->SetClipboard((Card*)pObj);
-			Card::CardCount--;
+			Card::SetCardCount(Card::GetCardCount() -1);
+			pGrid->PrintErrorMessage("Cut to clipboard, click to continue...");
 		}
 	}
 }

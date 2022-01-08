@@ -10,15 +10,14 @@ class Card : public GameObject
 {
 protected:
 	int cardNumber;  // an integer representing the card number
-
-public:
 	static int CardCount;
+public:
 
 	Card(const CellPosition& pos); // A Constructor for card that takes the cell position of it
-
+	static void SetCardCount(int Count);
 	void SetCardNumber(int cnum);   // The setter of card number
 	int GetCardNumber();            // The getter of card number
-
+	static int GetCardCount() ;
 	void Draw(Output* pOut) const;  // Draws the card number in the cell position of the card
 									// It has the same implementation for all Card Types (Non-Virtual)
 

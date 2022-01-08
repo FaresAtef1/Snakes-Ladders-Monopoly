@@ -26,6 +26,7 @@ void CopyCardAction::Execute()
 		if (dynamic_cast<Card*>(pObj))
 		{
 			pGrid->SetClipboard((Card*)pObj);
+			pGrid->PrintErrorMessage("Copied to clipboard, click to continue...");
 		}
 	}
 }

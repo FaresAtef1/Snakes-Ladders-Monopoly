@@ -72,6 +72,10 @@ CellPosition Snake::GetEndPosition() const
 {
 	return endCellPos;
 }
+int Snake::GetSnakeCount()
+{
+	return SnakeCount;
+}
 
 
 void Snake::Save(ofstream& OutFile, int Type)

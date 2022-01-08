@@ -103,7 +103,10 @@ void AddCardAction::Execute()
 		
 		// D- if the GameObject cannot be added in the Cell, Print the appropriate error message on statusbar
 		if (!added)
+		{
 			pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
+			delete pCard;
+		}
 	}
 
 	// Here, the card is created and added to the GameObject of its Cell, so we finished executing the AddCardAction

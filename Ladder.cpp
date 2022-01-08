@@ -41,6 +41,10 @@ CellPosition Ladder::GetEndPosition() const
 {
 	return endCellPos;
 }
+int Ladder::GetLadderCount()
+{
+	return LadderCount;
+}
 
 
 bool Ladder::IsOverlapping(GameObject* newObj) const 
